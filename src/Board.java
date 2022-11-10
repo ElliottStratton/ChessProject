@@ -1,6 +1,7 @@
 public class Board {
     Piece[][] board; //pieces will all be given a number value -> empty=0 pawn=1 rook=2 knight=3 bishop=4 queen=5 king=6
 
+
     public Board() {
         board = new Piece[8][8];
 //        Rook bROne = new Rook(false,0,0,this);
