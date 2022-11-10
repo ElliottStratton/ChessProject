@@ -12,7 +12,7 @@ public class King extends Piece{
     }
 
     @Override
-    public boolean isPossible(int x, int y) {
+    public boolean isPossible(int x, int y) throws IllegalArgumentException{
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
                 if(getX() + i == x && getY() == y) {
@@ -20,7 +20,7 @@ public class King extends Piece{
                 }
             }
         }
-        return false;
+        throw new IllegalArgumentException();
     }
 
     public boolean check(int x, int y) {

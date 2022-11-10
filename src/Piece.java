@@ -28,7 +28,7 @@ public abstract class Piece {
         return y;
     }
 
-    public abstract boolean isPossible(int x, int y);
+    public abstract boolean isPossible(int x, int y) throws IllegalArgumentException;
 
     public void move(int x, int y) {
         if(!sameSpot(x,y)) {
