@@ -66,8 +66,45 @@ public class Board {
                 if (board[i][j] == null) {
                     b = b + "0 ";
                 } else {
-                    b = b + board[i][j].getNum() + " ";
-                }
+                    if (board[i][j]instanceof Pawn) {
+                        if(board[i][j].white) {
+                            b = b + "wP";
+                        } else {
+                            b = b + "bP";
+                        }
+                    } else if (board[i][j]instanceof Rook) {
+                        if(board[i][j].white) {
+                            b = b + "wR";
+                        } else {
+                            b = b + "bR";
+                        }
+                    } else if (board[i][j]instanceof King) {
+                        if(board[i][j].white) {
+                            b = b + "wK";
+                        } else {
+                            b = b + "bK";
+                        }
+                    } else if (board[i][j]instanceof Queen) {
+                        if(board[i][j].white) {
+                            b = b + "wQ";
+                        } else {
+                            b = b + "bQ";
+                        }
+                    } else if (board[i][j]instanceof Bishop) {
+                        if(board[i][j].white) {
+                            b = b + "wB";
+                        } else {
+                            b = b + "bB";
+                        }
+                    } else if (board[i][j]instanceof Knight) {
+                        if (board[i][j].white) {
+                            b = b + "wH";
+                        } else {
+                            b = b + "bH";
+                        }
+                    }
+
+            }
             }
             b = b + "\n---------------\n";
         }
