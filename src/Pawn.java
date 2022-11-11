@@ -16,10 +16,6 @@ public class Pawn extends Piece {
         super.move(x,y);
     }
 
-    @Override
-    public int getNum() {
-        return 0;
-    }
 
     @Override
     public boolean isPossible(int x, int y) throws IllegalArgumentException{

@@ -27,8 +27,4 @@ public class King extends Piece{
         return false;
     }
 
-    @Override
-    public int getNum() {
-        return 6;
-    }
 }

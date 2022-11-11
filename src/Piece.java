@@ -84,13 +84,6 @@ public abstract class Piece {
     }
 
     /**
-     * Method is used for printing the board in console
-     * Each piece is given a number
-     * @return the specific number of that piece
-     */
-    public abstract int getNum();
-
-    /**
      * Ensures that a piece does not try to move to the spot it currently occupies
      * @param x new coordinates of the piece
      * @param y
