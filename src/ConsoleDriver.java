@@ -36,7 +36,7 @@ public class ConsoleDriver {
                     game.nextMove(x,y,newX,newY);
                 }
                 catch(Exception e){
-                    System.out.println("Invalid move attempt");
+                    System.out.println(e.getMessage());
                     valid = false;
                 }
             }

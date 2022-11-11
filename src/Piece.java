@@ -69,18 +69,25 @@ public abstract class Piece {
      * @param x the new coordinate of the piece
      * @param y                 "
      */
-    public void move(int x, int y) {
-        if(!sameSpot(x,y)) {
-            if(!sameColorMove(x,y)) {
-                if(isPossible(x, y)) {
-                    currBoard.unOccupy(getX(), getY());
-                    setPosition(x,y);
-                    currBoard.occupy(this,x,y);
-                }
-            }
+    public void move(int x, int y) throws IllegalArgumentException{
+        if(sameSpot(x,y))
+        {
+            throw new IllegalArgumentException("Coordinates to move are in the same spot.");
         }
 
-
+        else if(sameColorMove(x,y))
+        {
+            throw new IllegalArgumentException("Cannot move onto another one of your pieces.");
+        }
+        else if(moveOutsideBoard(x,y))
+        {
+            throw new IllegalArgumentException("Desired location is outside the board. Please enter a valid location");
+        }
+        else if(isPossible(x, y)) {
+            currBoard.unOccupy(getX(), getY());
+            setPosition(x, y);
+            currBoard.occupy(this, x, y);
+        }
     }
 
     /**
@@ -114,6 +121,23 @@ public abstract class Piece {
             }
         }
         return false;
+    }
+
+    /**
+     * Ensures that the location you input is not outside the board
+     * @param x x coordinate of the new location
+     * @param y y coordinate of the new location
+     * @return true or false whether you are trying to move to a location not on the board
+     */
+    public boolean moveOutsideBoard(int x, int y) {
+        if (x < 0 || y < 0 || x > 7 || y > 7)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
 }

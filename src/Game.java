@@ -47,6 +47,15 @@ public class Game {
      */
     public void nextMove(int x1, int y1, int x2, int y2)
     {
+        /*
+        * Errors: if you try to move a piece that's not yours
+        * if you try to move into the same spot
+        * if you try to move from an empty space
+        * if you try to move to a place occupied by your piece or another piece is in the way
+        *
+        * */
+
+
 
     }
 
