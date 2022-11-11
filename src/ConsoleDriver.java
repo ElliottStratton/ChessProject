@@ -9,19 +9,27 @@ public class ConsoleDriver {
             start = true;
         }
         Game game = new Game();
-        Board board = new Board();
 
         boolean hasWon = false;
         while(!hasWon){
+
+            String player = "";
+            if(game.isCurrentPlayer()){
+                player = "white";
+            }
+            else{
+                player = "black";
+            }
+
             boolean valid = false;
             while(!valid){
                 try{
                     System.out.println("enter space of piece you want to move");
-                    char y = scnr.next().charAt(0);
+                    int y = scnr.nextInt();
                     int x = scnr.nextInt();
 
                     System.out.println("enter space where you want to move the piece");
-                    char newY = scnr.next().charAt(0);
+                    int newY = scnr.nextInt();
                     int newX = scnr.nextInt();
 
                     valid = true;
@@ -32,12 +40,14 @@ public class ConsoleDriver {
                     valid = false;
                 }
             }
-            if (game.checkmate()){
-                if(game.isCurrentPlayer()){
-                    String player = "white";
-                }
-                System.out.println(game.isCurrentPlayer() + "");
+            if (game.hasWon()){
+                hasWon = true;
+                System.out.println(player + " has won with a checkmate");
             }
+            else{
+                game.changePlayer();
+            }
+
         }
     }
 }
