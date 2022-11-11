@@ -29,9 +29,4 @@ public class Rook extends Piece{
     public boolean check(int x, int y) {
         return false;
     }
-
-    @Override
-    public int getNum() {
-        return 6;
-    }
 }

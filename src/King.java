@@ -5,13 +5,6 @@ public class King extends Piece{
     }
 
     @Override
-    public void move(int x,int y) {
-        if(!check(x,y)) {
-            super.move(x,y);
-        }
-    }
-
-    @Override
     public boolean isPossible(int x, int y) throws IllegalArgumentException{
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
@@ -21,10 +14,6 @@ public class King extends Piece{
             }
         }
         throw new IllegalArgumentException();
-    }
-
-    public boolean check(int x, int y) {
-        return false;
     }
 
 }
