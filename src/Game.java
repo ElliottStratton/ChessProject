@@ -65,6 +65,10 @@ public class Game {
         }
     }
 
+    public boolean isCurrentPlayer() {
+        return currentPlayer;
+    }
+
 
     // NOTE: Right now we are doing game loop in the console class.
     //

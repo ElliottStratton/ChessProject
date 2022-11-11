@@ -14,8 +14,6 @@ public class Rook extends Piece{
 
 
     //TODO change everything below this
-
-
     @Override
     public boolean isPossible(int x, int y) {
         for (int i = -1; i < 2; i++) {

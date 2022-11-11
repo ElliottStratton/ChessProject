@@ -8,18 +8,36 @@ public class ConsoleDriver {
         if (scnr.next().charAt(0) == 'Y'){
             start = true;
         }
-//        Game game = new Game();
+        Game game = new Game();
         Board board = new Board();
 
-//        while(!hasWon){
-//            System.out.println("enter move");
-//            try{
-//                game.nextMove(x,y,x,y);
-//            }
-//            catch{
-//
-//            }
-//        }
+        boolean hasWon = false;
+        while(!hasWon){
+            boolean valid = false;
+            while(!valid){
+                try{
+                    System.out.println("enter space of piece you want to move");
+                    char y = scnr.next().charAt(0);
+                    int x = scnr.nextInt();
 
+                    System.out.println("enter space where you want to move the piece");
+                    char newY = scnr.next().charAt(0);
+                    int newX = scnr.nextInt();
+
+                    valid = true;
+                    game.nextMove(x,y,newX,newY);
+                }
+                catch(Exception e){
+                    System.out.println("Invalid move attempt");
+                    valid = false;
+                }
+            }
+            if (game.checkmate()){
+                if(game.isCurrentPlayer()){
+                    String player = "white";
+                }
+                System.out.println(game.isCurrentPlayer() + "");
+            }
+        }
     }
 }
