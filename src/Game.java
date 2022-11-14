@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Game {
     private Board board;
     private boolean currentPlayer;
@@ -72,6 +74,15 @@ public class Game {
      */
     public boolean isCurrentPlayer() {
         return currentPlayer;
+    }
+
+    /**
+     *
+     * @param white determines which team you want to see the moves of
+     * @return an arraylist of every single possible move of a color
+     */
+    public ArrayList<String> allPossibleMoves(boolean white){
+        return null;
     }
 
 
