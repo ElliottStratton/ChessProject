@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Piece class controls most of the functions of each piece
  * The child classes control the possible moves
@@ -138,6 +140,76 @@ public abstract class Piece {
         {
             return true;
         }
+    }
+
+
+    /**
+     * Translates a current x,y location to the Chess annotation of LetterNumber
+     * @param loc is an arraylist of an x and a y coordinate
+     * */
+    public String translateNum(ArrayList<Integer> loc){
+        x = loc.get(0);
+        y = 8 - loc.get(1);
+        StringBuilder sb = new StringBuilder();
+        if (x == 0){
+            sb.append("a");
+        }
+        else if (x == 1){
+            sb.append("b");
+        }
+        else if (x == 2){
+            sb.append("c");
+        }
+        else if (x == 3){
+            sb.append("d");
+        }
+        else if (x == 4){
+            sb.append("e");
+        }
+        else if (x == 5){
+            sb.append("f");
+        }
+        else if (x == 6){
+            sb.append("g");
+        }
+        else if (x == 7){
+            sb.append("h");
+        }
+        sb.append(y);
+        return sb.toString();
+    }
+
+    public ArrayList<Integer> translateLetNum(String loc){
+        ArrayList<Integer> location = new ArrayList<>();
+        char x = loc.charAt(0);
+        int numX = 0;
+        int y = loc.charAt(1) -8;
+
+        if (x == 'a'){
+            numX = 0;
+        }
+        else if (x == 'b'){
+            numX = 1;
+        }
+        else if (x == 'c'){
+            numX = 2;
+        }
+        else if (x == 'd'){
+            numX = 3;
+        }
+        else if (x == 'e'){
+            numX = 4;
+        }
+        else if (x == 'f'){
+            numX = 5;
+        }
+        else if (x == 'g'){
+            numX = 6;
+        }
+        else if (x == 'h'){
+            numX = 7;
+        }
+        return location;
     }
 
 }
