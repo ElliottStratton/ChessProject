@@ -1,7 +1,13 @@
+/**
+ * Runs a chess board
+ */
 public class Board {
-    Piece[][] board; //pieces will all be given a number value -> empty=0 pawn=1 rook=2 knight=3 bishop=4 queen=5 king=6
+    Piece[][] board;
 
 
+    /**
+     * creates a board with every piece in the correct positions
+     */
     public Board() {
         board = new Piece[8][8];
 //        Rook bROne = new Rook(false,0,0,this);
@@ -42,22 +48,48 @@ public class Board {
 //        Queen wQueen = new Queen(false,7,4,this);
     }
 
+    /**
+     * constructor for testing
+     * @param e doesnt matter just for differentiating from the other constructor
+     */
     public Board(int e) {
         board = new Piece[8][8];
     }
 
+    /**
+     *
+     * @param x coordinate of the piece
+     * @param y coordinate of the piece
+     * @return the piece at any location on the board
+     */
     public Piece getPiece(int x, int y) {
         return board[x][y];
     }
 
+    /**
+     * puts a piece in a certain x y position
+     * @param piece
+     * @param x
+     * @param y
+     */
     public void occupy(Piece piece, int x, int y) {
         board[x][y] = piece;
     }
 
+    /**
+     * removes a piece from a position (used for moving)
+     * @param x
+     * @param y
+     */
     public void unOccupy(int x, int y) {
         board[x][y] = null;
     }
 
+    /**
+     *
+     * @return a string board where each piece is two letters, the first is either black or white
+     * the second tells what type of piece it is
+     */
     @Override
     public String toString() {
         String b = "";

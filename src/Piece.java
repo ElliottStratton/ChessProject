@@ -58,7 +58,8 @@ public abstract class Piece {
     }
 
     /**
-     * Compares the move a player wants to the current piece
+     * Compares the move a player wants to the current piece location
+     * Each piece has different moves so each piece overrides this
      * @param x coordinate of the new move
      * @param y             "
      * @return true if the move is possible
