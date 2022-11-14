@@ -10,7 +10,7 @@ public class Game {
      */
     public Game() {
         board = new Board();
-        currentPlayer = false;
+        currentPlayer = true; // True is player white
     }
 
     /**
@@ -31,14 +31,6 @@ public class Game {
         return false;
     }
 
-    /**
-     *
-     * @return true if
-     */
-    public boolean hasWon()
-    {
-        return false;
-    }
 
     /**
      *
@@ -76,6 +68,10 @@ public class Game {
         }
     }
 
+    /**
+     * This method returns the current player.
+     * @return True is player white, false is player black.
+     */
     public boolean isCurrentPlayer() {
         return currentPlayer;
     }
