@@ -42,7 +42,7 @@ public class ConsoleDriver {
                     valid = false;
                 }
             }
-            if (game.hasWon()){
+            if (game.checkmate()){
                 hasWon = true;
                 System.out.println(player + " has won with a checkmate");
             }
