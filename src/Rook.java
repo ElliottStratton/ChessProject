@@ -7,12 +7,6 @@ public class Rook extends Piece{
         b.occupy(this,x,y);
     }
 
-    public void move(int x,int y) {
-        if(!check(x,y)) {
-            super.move(x,y);
-        }
-    }
-
     public ArrayList<String> possibleMoves(){
         ArrayList<String> moves = new ArrayList<>();
         ArrayList<Integer> move = new ArrayList<>();
