@@ -24,13 +24,15 @@ public class ConsoleDriver {
             boolean valid = false;
             while(!valid){
                 try{
-                    System.out.println("enter space of piece you want to move");
-                    int y = scnr.nextInt();
-                    int x = scnr.nextInt();
+                    System.out.println("Enter initial piece's coordinates: ");
+                    scnr.useDelimiter("");
+                    int x = convertX(scnr.next());
+                    int y = convertY(scnr.nextInt());
 
-                    System.out.println("enter space where you want to move the piece");
-                    int newY = scnr.nextInt();
-                    int newX = scnr.nextInt();
+
+                    System.out.println("Enter coordinates you want to move: ");
+                    int newX = convertX(scnr.next());
+                    int newY = convertY(scnr.nextInt());
 
                     valid = true;
                     game.nextMove(x,y,newX,newY);
@@ -49,5 +51,15 @@ public class ConsoleDriver {
             }
 
         }
+    }
+
+    public static int convertX(String str)
+    {
+        return (int)str.charAt(0) - 65;
+    }
+
+    public static int convertY(int y)
+    {
+        return 8-y;
     }
 }
