@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Rook extends Piece{
     public Rook(boolean color, int x, int y, Board b) {
@@ -6,24 +7,21 @@ public class Rook extends Piece{
         b.occupy(this,x,y);
     }
 
-    @Override
     public void move(int x,int y) {
         if(!check(x,y)) {
             super.move(x,y);
         }
     }
 
-
-
-    //TODO change everything below this
-
     public ArrayList<String> possibleMoves(){
         ArrayList<String> moves = new ArrayList<>();
+        ArrayList<Integer> move = new ArrayList<>();
         for (int i = 0; i < 4; i++) { //loop to control how many in directions to search
             inner: for (int j = 0; j < 8; j++) { //Loop to control how many spaces forward to check
+                String numLetLocation = "";
                 if(i == 0){
                     if (this.isPossible(x+i, y)){
-                        moves.add(); //Add this current location in Chess notion
+                        move = new ArrayList<>(List.of(x+i, y));
                     }
                     else{
                         break inner;
@@ -31,7 +29,7 @@ public class Rook extends Piece{
                 }
                 else if (i == 1){
                     if (this.isPossible(x-i, y)){
-                        moves.add(); //Add this current location in Chess notion
+                        move = new ArrayList<>(List.of(x-i, y));
                     }
                     else{
                         break inner;
@@ -39,7 +37,7 @@ public class Rook extends Piece{
                 }
                 else if (i == 2){
                     if (this.isPossible(x, y+i)){
-                        moves.add(); //Add this current location in Chess notion
+                        move = new ArrayList<>(List.of(x, y+i));
                     }
                     else{
                         break inner;
@@ -47,29 +45,29 @@ public class Rook extends Piece{
                 }
                 else if (i == 3){
                     if (this.isPossible(x, y-i)){
-                        moves.add(); //Add this current location in Chess notion
+                        move = new ArrayList<>(List.of(x, y-i));
                     }
                     else{
                         break inner;
                     }
                 }
-            }
-        }
-
-
-        return moves;
-    }
-
-    @Override
-    public boolean isPossible(int x, int y) {
-        for (int i = -1; i < 2; i++) {
-            for (int j = -1; j < 2; j++) {
-                if(getX() + i == x && getY() == y) {
-                    return true;
+                if (!move.isEmpty()){
+                    moves.add(translateNum(move)); //Add this current location in Chess notation
                 }
             }
         }
-        return false;
+        return moves;
+    }
+
+    public boolean isPossible(int x, int y) {
+        boolean possible = false;
+        if (sameSpot(x,y) || sameColorMove(x,y) || moveOutsideBoard(x,y)){
+            return false;
+        }
+        else if(currBoard.getPiece(x,y) == null || currBoard.getPiece(x,y).white == this.white){
+            return true;
+        }
+       return possible;
     }
 
     public boolean check(int x, int y) {
