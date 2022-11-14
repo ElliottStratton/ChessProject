@@ -89,6 +89,19 @@ public class Game {
         return null;
     }
 
+    /**
+     * castling method will allow for the castle move if the requirements for the rook and king positions is met
+     */
+    public void castling() {
+    }
+
+    /**
+     * pawnPromotion method will prompt the player to choose which piece to promote a pawn to if it reaches the opposite
+     * side of the board.
+     */
+    public void pawnPromotion(){
+    }
+
 
     // NOTE: Right now we are doing game loop in the console class.
     //
