@@ -6,7 +6,7 @@ import java.util.ArrayList;
  */
 public abstract class Piece {
 
-    boolean white; //white is true
+    boolean white; //white is true and white is at the bottom moving upward
     int x;
     int y;
     Board currBoard;
