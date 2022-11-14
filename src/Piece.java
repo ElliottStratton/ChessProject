@@ -66,6 +66,21 @@ public abstract class Piece {
      */
     public abstract boolean isPossible(int x, int y) throws IllegalArgumentException;
 
+    public ArrayList<String> possibleMoves() {
+        ArrayList<String> moves = new ArrayList<>();
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                if(isPossible(i,j)) {
+                    ArrayList<Integer> nums = new ArrayList<>();
+                    nums.add(i);
+                    nums.add(j);
+                    moves.add(translateNum(nums));
+                }
+            }
+        }
+        return moves;
+    }
+
     /**
      * Moves a piece
      * @param x the new coordinate of the piece
@@ -148,34 +163,34 @@ public abstract class Piece {
      * @param loc is an arraylist of an x and a y coordinate
      * */
     public String translateNum(ArrayList<Integer> loc){
-        x = loc.get(0);
-        y = 8 - loc.get(1);
+        int newX = loc.get(0);
+        int newY = 8 - loc.get(1);
         StringBuilder sb = new StringBuilder();
-        if (x == 0){
+        if (newX == 0){
             sb.append("a");
         }
-        else if (x == 1){
+        else if (newX == 1){
             sb.append("b");
         }
-        else if (x == 2){
+        else if (newX == 2){
             sb.append("c");
         }
-        else if (x == 3){
+        else if (newX == 3){
             sb.append("d");
         }
-        else if (x == 4){
+        else if (newX == 4){
             sb.append("e");
         }
-        else if (x == 5){
+        else if (newX == 5){
             sb.append("f");
         }
-        else if (x == 6){
+        else if (newX == 6){
             sb.append("g");
         }
-        else if (x == 7){
+        else if (newX == 7){
             sb.append("h");
         }
-        sb.append(y);
+        sb.append(newY);
         return sb.toString();
     }
 
