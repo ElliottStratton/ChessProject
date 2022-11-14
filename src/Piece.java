@@ -66,6 +66,10 @@ public abstract class Piece {
      */
     public abstract boolean isPossible(int x, int y) throws IllegalArgumentException;
 
+    /**
+     *
+     * @return an arraylist of strings of the possible moves for any piece
+     */
     public ArrayList<String> possibleMoves() {
         ArrayList<String> moves = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
