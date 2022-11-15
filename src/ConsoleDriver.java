@@ -1,6 +1,17 @@
 import java.util.Scanner;
 
 public class ConsoleDriver {
+    public static String getPlayer(boolean player){
+        String sPlayer = "";
+        if(player){
+            sPlayer = "white";
+        }
+        else{
+            sPlayer = "black";
+        }
+        return sPlayer;
+    }
+
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
         System.out.println("Enter Y to Start game or N to close");
@@ -13,13 +24,8 @@ public class ConsoleDriver {
         boolean hasWon = false;
         while(!hasWon){
 
-            String player = "";
-            if(game.isCurrentPlayer()){
-                player = "white";
-            }
-            else{
-                player = "black";
-            }
+
+            String player = getPlayer(game.isCurrentPlayer());
 
             boolean valid = false;
             while(!valid){
@@ -34,14 +40,15 @@ public class ConsoleDriver {
                     int newX = convertX(scnr.next());
                     int newY = convertY(scnr.nextInt());
 
-                    valid = true;
                     game.nextMove(x,y,newX,newY);
+                    valid = true;
                 }
                 catch(Exception e){
                     System.out.println(e.getMessage());
                     valid = false;
                 }
             }
+            System.out.println(game.getBoard().toString());
             if (game.checkmate()){
                 hasWon = true;
                 System.out.println(player + " has won with a checkmate");
@@ -49,7 +56,6 @@ public class ConsoleDriver {
             else{
                 game.changePlayer();
             }
-
         }
     }
 

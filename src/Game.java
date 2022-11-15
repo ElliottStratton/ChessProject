@@ -48,9 +48,6 @@ public class Game {
         * if you try to move to a place occupied by your piece or another piece is in the way
         *
         * */
-
-
-
     }
 
     /**
@@ -98,6 +95,13 @@ public class Game {
     public void pawnPromotion(){
     }
 
+    /**
+     * This method is a simple getter for Board
+     * @return Board is the current board
+     * */
+    public Board getBoard() {
+        return board;
+    }
 
     // NOTE: Right now we are doing game loop in the console class.
     //
