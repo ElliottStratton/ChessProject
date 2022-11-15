@@ -2,15 +2,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Rook extends Piece{
+    /**
+     * default constructor
+     *
+     * @param color player
+     * @param x     initial x position
+     * @param y     initial y position
+     * @param b     board that the pawn will be on
+     */
     public Rook(boolean color, int x, int y, Board b) {
         super(color, x, y, b);
         b.occupy(this,x,y);
     }
 
-    public void move(int x,int y) {
-            super.move(x,y);
-    }
-
+    /**
+     * This returns a list of all possible moves for this specific piece
+     * @return ArrayList<String> is the arraylist of possible moves
+     * */
     public ArrayList<String> possibleMoves(){
         ArrayList<String> moves = new ArrayList<>();
         ArrayList<Integer> move = new ArrayList<>();
@@ -57,6 +65,12 @@ public class Rook extends Piece{
         return moves;
     }
 
+    /**
+     * Takes a possible move and checks if it is valid
+     * @param x is the x coordinate of a possible move
+     * @param y is the y coordinate of a possible move
+     * @return true if a specific move is possible
+     * */
     public boolean isPossible(int x, int y) {
         boolean possible = false;
         if (sameSpot(x,y) || sameColorMove(x,y) || moveOutsideBoard(x,y)){
@@ -66,9 +80,5 @@ public class Rook extends Piece{
             return true;
         }
        return possible;
-    }
-
-    public boolean check(int x, int y) {
-        return false;
     }
 }

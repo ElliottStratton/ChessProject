@@ -1,6 +1,12 @@
 import java.util.Scanner;
 
 public class ConsoleDriver {
+
+    /**
+     * This returns the color of the player from the boolean
+     * @param player is a boolean that determines true for white or false for black
+     * @return A string with the color of the player
+     * */
     public static String getPlayer(boolean player){
         String sPlayer = "";
         if(player){
@@ -10,6 +16,26 @@ public class ConsoleDriver {
             sPlayer = "black";
         }
         return sPlayer;
+    }
+
+    /**
+     * This takes in a String of one character and makes it an integer
+     * @param str is the character coordinate that the player inputted
+     * @return An integer that is the correct coordinate to navigate the 2d array
+     * */
+    public static int convertX(String str)
+    {
+        return (int)str.charAt(0) - 65;
+    }
+
+    /**
+     * This takes in an integer of one character and makes it the correct integer
+     * @param y is the integer coordinate that the player inputted
+     * @return An integer that is the correct coordinate to navigate the 2d array
+     * */
+    public static int convertY(int y)
+    {
+        return 8-y;
     }
 
     public static void main(String[] args) {
@@ -59,13 +85,4 @@ public class ConsoleDriver {
         }
     }
 
-    public static int convertX(String str)
-    {
-        return (int)str.charAt(0) - 65;
-    }
-
-    public static int convertY(int y)
-    {
-        return 8-y;
-    }
 }
