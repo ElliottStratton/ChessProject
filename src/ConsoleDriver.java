@@ -50,7 +50,6 @@ public class ConsoleDriver {
         boolean hasWon = false;
         while(!hasWon){
 
-
             String player = getPlayer(game.isCurrentPlayer());
 
             boolean valid = false;
@@ -83,6 +82,5 @@ public class ConsoleDriver {
                 game.changePlayer();
             }
         }
-    }
-
+    }//End main
 }

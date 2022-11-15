@@ -39,23 +39,20 @@ public class Game {
      * @param x2 where you want to move in the x
      * @param y2 where you want to move in the y
      */
-    public void nextMove(int x1, int y1, int x2, int y2)
+    public void nextMove(int x1, int y1, int x2, int y2) throws IllegalArgumentException
     {
         Piece currPiece = board.getPiece(x1,y1);
         if (currPiece.white != currentPlayer){
-            System.out.println("This is not your piece to move.");
+            throw new IllegalArgumentException("This is not your piece to move.");
         }
         else{
-            if (currPiece.isPossible(x2,y2)){ //isPossible() returns whether that move is possible
+            try{
                 currPiece.move(x2,y2); //move() throws an IllegalArgumentException with a message for each possible incorrect solution
             }
-            else{
-                System.out.println("Move is not possible for that piece");
+            catch(IllegalArgumentException e){
+                throw e;
             }
         }
-
-
-
         /*
         * Errors: if you try to move a piece that's not yours
         * if you try to move into the same spot
