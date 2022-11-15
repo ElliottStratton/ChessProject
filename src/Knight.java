@@ -11,11 +11,6 @@ public class Knight extends Piece{
         b.occupy(this,x,y);
     }
 
-    @Override
-    public void move(int x,int y) {
-        super.move(x,y);
-    }
-
 
     @Override
     public boolean isPossible(int x, int y) throws IllegalArgumentException{
