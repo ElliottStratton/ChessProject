@@ -96,7 +96,6 @@ public abstract class Piece {
         {
             throw new IllegalArgumentException("Coordinates to move are in the same spot.");
         }
-
         else if(sameColorMove(x,y))
         {
             throw new IllegalArgumentException("Cannot move onto another one of your pieces.");

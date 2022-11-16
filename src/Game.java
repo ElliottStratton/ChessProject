@@ -39,8 +39,7 @@ public class Game {
      * @param x2 where you want to move in the x
      * @param y2 where you want to move in the y
      */
-    public void nextMove(int x1, int y1, int x2, int y2) throws IllegalArgumentException
-    {
+    public void nextMove(int x1, int y1, int x2, int y2) throws IllegalArgumentException {
         Piece currPiece = board.getPiece(x1,y1);
         if (currPiece.white != currentPlayer){
             throw new IllegalArgumentException("This is not your piece to move.");

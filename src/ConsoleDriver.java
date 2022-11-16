@@ -20,12 +20,38 @@ public class ConsoleDriver {
 
     /**
      * This takes in a String of one character and makes it an integer
-     * @param str is the character coordinate that the player inputted
+     * @param x is the character coordinate that the player inputted
      * @return An integer that is the correct coordinate to navigate the 2d array
      * */
-    public static int convertX(String str)
+    public static int convertX(char x)
     {
-        return (int)str.charAt(0) - 65;
+        x = Character.toLowerCase(x);
+        int numX = 0;
+        if (x == 'a'){
+            numX = 0;
+        }
+        else if (x == 'b'){
+            numX = 1;
+        }
+        else if (x == 'c'){
+            numX = 2;
+        }
+        else if (x == 'd'){
+            numX = 3;
+        }
+        else if (x == 'e'){
+            numX = 4;
+        }
+        else if (x == 'f'){
+            numX = 5;
+        }
+        else if (x == 'g'){
+            numX = 6;
+        }
+        else if (x == 'h'){
+            numX = 7;
+        }
+        return numX;
     }
 
     /**
@@ -40,31 +66,31 @@ public class ConsoleDriver {
 
     public static void main(String[] args) {
         Scanner scnr = new Scanner(System.in);
-        System.out.println("Enter Y to Start game or N to close");
-        boolean start = false;
-        if (scnr.next().charAt(0) == 'Y'){
-            start = true;
-        }
         Game game = new Game();
-
         boolean hasWon = false;
-        while(!hasWon){
 
+        System.out.println(game.getBoard().toString()); //For testing purposes
+
+        while(!hasWon){
             String player = getPlayer(game.isCurrentPlayer());
 
             boolean valid = false;
             while(!valid){
+                System.out.println("Enter initial piece's coordinates: ");
+                scnr.useDelimiter("");
+                int x = convertX(scnr.next().charAt(0));
+                System.out.println("x " + x);
+                int y = convertY(scnr.nextInt());
+                System.out.println("y " + y);
+
+                System.out.println("Enter coordinates you want to move: ");
+                int newX = convertX(scnr.next().charAt(0));
+                newX = convertX(scnr.next().charAt(0));
+                System.out.println("newX " + newX);
+                int newY = convertY(scnr.nextInt());
+                System.out.println("newY " + newY);
+
                 try{
-                    System.out.println("Enter initial piece's coordinates: ");
-                    scnr.useDelimiter("");
-                    int x = convertX(scnr.next());
-                    int y = convertY(scnr.nextInt());
-
-
-                    System.out.println("Enter coordinates you want to move: ");
-                    int newX = convertX(scnr.next());
-                    int newY = convertY(scnr.nextInt());
-
                     game.nextMove(x,y,newX,newY);
                     valid = true;
                 }

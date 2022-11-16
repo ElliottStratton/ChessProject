@@ -135,11 +135,13 @@ public class Board {
                             b = b + "bH";
                         }
                     }
-
+                }
             }
+            if (i<7){
+                b = b + "\n---------------\n";
             }
-            b = b + "\n---------------\n";
         }
+        b = b + "\n";
         return b;
     }
 
