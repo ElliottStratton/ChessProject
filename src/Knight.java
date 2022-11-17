@@ -20,38 +20,37 @@ public class Knight extends Piece{
      * */
     public ArrayList<String> possibleMoves(){
         ArrayList<String> moves = new ArrayList<>();
-        ArrayList<Integer> move = new ArrayList<>();
         for (int i = 0; i < 4; i++) { //checks each of the four directions in which it can move
             if (i == 0){
                 if (isPossible(x+3, y+1)){
-                    move = new ArrayList<>(List.of(x+3,y+1));
+                    moves.add(translateNum(new ArrayList<>(List.of(x+3,y+1))));
                 }
                 if (isPossible(x+3, y-1)){
-                    move = new ArrayList<>(List.of(x+3,y-1));
+                    moves.add(translateNum(new ArrayList<>(List.of(x+3,y-1))));
                 }
             }
             if (i == 1){
                 if (isPossible(x-3, y+1)){
-                    move = new ArrayList<>(List.of(x-3,y+1));
+                    moves.add(translateNum(new ArrayList<>(List.of(x-3,y+1))));
                 }
                 if (isPossible(x-3, y-1)){
-                    move = new ArrayList<>(List.of(x-3,y-1));
+                    moves.add(translateNum(new ArrayList<>(List.of(x-3,y-1))));
                 }
             }
             if (i == 2){
                 if (isPossible(x+1, y+3)){
-                    move = new ArrayList<>(List.of(x+1,y+3));
+                    moves.add(translateNum(new ArrayList<>(List.of(x+1,y+3))));
                 }
                 if (isPossible(x-1, y+3)){
-                    move = new ArrayList<>(List.of(x-1,y+3));
+                    moves.add(translateNum(new ArrayList<>(List.of(x-1,y+3))));
                 }
             }
             if (i == 3){
                 if (isPossible(x+1, y-3)){
-                    move = new ArrayList<>(List.of(x+1,y-3));
+                    moves.add(translateNum(new ArrayList<>(List.of(x+1,y-3))));
                 }
                 if (isPossible(x-1, y-3)){
-                    move = new ArrayList<>(List.of(x-1,y-3));
+                    moves.add(translateNum(new ArrayList<>(List.of(x-1,y-3))));
                 }
             }
         }

@@ -20,12 +20,11 @@ public class Bishop extends Piece{
      * */
     public ArrayList<String> possibleMoves() {
         ArrayList<String> moves = new ArrayList<>();
-        ArrayList<Integer> move = new ArrayList<>();
         for (int i = 0; i < 4; i++) { //loop to control how many in directions to search
             for (int j = 0; j < 8; j++) {
                 if(i == 0){
                     if (this.isPossible(x+j, y+j)){
-                        move = new ArrayList<>(List.of(x+j, y+j));
+                        moves.add(translateNum(new ArrayList<>(List.of(x+j,y+j))));
                     }
                     else{
                         break;
@@ -33,7 +32,7 @@ public class Bishop extends Piece{
                 }
                 else if (i == 1){
                     if (this.isPossible(x-j, y-j)){
-                        move = new ArrayList<>(List.of(x-j, y-j));
+                        moves.add(translateNum(new ArrayList<>(List.of(x-j,y-j))));
                     }
                     else{
                         break;
@@ -41,7 +40,7 @@ public class Bishop extends Piece{
                 }
                 else if (i == 2){
                     if (this.isPossible(x-j, y+j)){
-                        move = new ArrayList<>(List.of(x-j, y+j));
+                        moves.add(translateNum(new ArrayList<>(List.of(x-j,y+j))));
                     }
                     else{
                         break;
@@ -49,16 +48,13 @@ public class Bishop extends Piece{
                 }
                 else if (i == 3){
                     if (this.isPossible(x+j, y-j)){
-                        move = new ArrayList<>(List.of(x+j, y-j));
+                        moves.add(translateNum(new ArrayList<>(List.of(x+j,y-j))));
                     }
                     else{
                         break;
                     }
                 }
             }
-        }
-        if (!move.isEmpty()){
-            moves.add(translateNum(move)); //Add this current location in Chess notation
         }
         return moves;
     }

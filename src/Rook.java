@@ -21,12 +21,11 @@ public class Rook extends Piece{
      * */
     public ArrayList<String> possibleMoves(){
         ArrayList<String> moves = new ArrayList<>();
-        ArrayList<Integer> move = new ArrayList<>();
         for (int i = 0; i < 4; i++) { //loop to control how many in directions to search
             for (int j = 0; j < 8; j++) { //Loop to control how many spaces forward to check
                 if(i == 0){
                     if (this.isPossible(x+j, y)){
-                        move = new ArrayList<>(List.of(x+j, y));
+                        moves.add(translateNum(new ArrayList<>(List.of(x+j,y))));
                     }
                     else{
                         break;
@@ -34,7 +33,7 @@ public class Rook extends Piece{
                 }
                 else if (i == 1){
                     if (this.isPossible(x-j, y)){
-                        move = new ArrayList<>(List.of(x-j, y));
+                        moves.add(translateNum(new ArrayList<>(List.of(x-j,y))));
                     }
                     else{
                         break;
@@ -42,7 +41,7 @@ public class Rook extends Piece{
                 }
                 else if (i == 2){
                     if (this.isPossible(x, y+j)){
-                        move = new ArrayList<>(List.of(x, y+j));
+                        moves.add(translateNum(new ArrayList<>(List.of(x,y+j))));
                     }
                     else{
                         break;
@@ -50,14 +49,11 @@ public class Rook extends Piece{
                 }
                 else if (i == 3){
                     if (this.isPossible(x, y-j)){
-                        move = new ArrayList<>(List.of(x, y-j));
+                        moves.add(translateNum(new ArrayList<>(List.of(x,y-j))));
                     }
                     else{
                         break;
                     }
-                }
-                if (!move.isEmpty()){
-                    moves.add(translateNum(move)); //Add this current location in Chess notation
                 }
             }
         }
