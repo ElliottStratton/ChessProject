@@ -51,6 +51,7 @@ public class ConsoleDriver {
         else if (x == 'h'){
             numX = 7;
         }
+//        return x-65;
         return numX;
     }
 
@@ -61,7 +62,7 @@ public class ConsoleDriver {
      * */
     public static int convertY(int y)
     {
-        return 8-y;
+        return 56-y;
     }
 
     public static void main(String[] args) {
@@ -77,17 +78,17 @@ public class ConsoleDriver {
             boolean valid = false;
             while(!valid){
                 System.out.println("Enter initial piece's coordinates: ");
-                scnr.useDelimiter("");
-                int x = convertX(scnr.next().charAt(0));
+                String currLoc = scnr.next();
+                int x = convertX(currLoc.charAt(0));
                 System.out.println("x " + x);
-                int y = convertY(scnr.nextInt());
+                int y = convertY(currLoc.charAt(1));
                 System.out.println("y " + y);
 
                 System.out.println("Enter coordinates you want to move: ");
-                int newX = convertX(scnr.next().charAt(0));
-                newX = convertX(scnr.next().charAt(0));
+                String newLoc = scnr.next();
+                int newX = convertX(newLoc.charAt(0));
                 System.out.println("newX " + newX);
-                int newY = convertY(scnr.nextInt());
+                int newY = convertY(newLoc.charAt(1));
                 System.out.println("newY " + newY);
 
                 try{
@@ -96,7 +97,7 @@ public class ConsoleDriver {
                 }
                 catch(Exception e){
                     System.out.println(e.getMessage());
-                    valid = false;
+                    System.out.println("Try reentering the coordinates.");
                 }
             }
             System.out.println(game.getBoard().toString());
