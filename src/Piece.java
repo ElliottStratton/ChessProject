@@ -100,7 +100,7 @@ public abstract class Piece {
         {
             throw new IllegalArgumentException("Cannot move onto another one of your pieces.");
         }
-        else if(!moveOutsideBoard(x,y))
+        else if(moveOutsideBoard(x,y))
         {
             throw new IllegalArgumentException("Desired location is outside the board. Please enter a valid location");
         }
@@ -153,11 +153,11 @@ public abstract class Piece {
     public boolean moveOutsideBoard(int x, int y) {
         if (x < 0 || y < 0 || x > 7 || y > 7) //If it is outside the board
         {
-            return false;
+            return true;
         }
         else //If it is inside the board
         {
-            return true;
+            return false;
         }
     }
 
