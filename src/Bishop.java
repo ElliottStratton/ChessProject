@@ -23,7 +23,7 @@ public class Bishop extends Piece{
         for (int i = 0; i < 4; i++) { //loop to control how many in directions to search
             for (int j = 0; j < 8; j++) {
                 if(i == 0){
-                    if (this.isPossible(x+j, y+j)){
+                    if (isPossible(x+j, y+j)){
                         moves.add(translateNum(new ArrayList<>(List.of(x+j,y+j))));
                     }
                     else{
@@ -31,7 +31,7 @@ public class Bishop extends Piece{
                     }
                 }
                 else if (i == 1){
-                    if (this.isPossible(x-j, y-j)){
+                    if (isPossible(x-j, y-j)){
                         moves.add(translateNum(new ArrayList<>(List.of(x-j,y-j))));
                     }
                     else{
@@ -39,7 +39,7 @@ public class Bishop extends Piece{
                     }
                 }
                 else if (i == 2){
-                    if (this.isPossible(x-j, y+j)){
+                    if (isPossible(x-j, y+j)){
                         moves.add(translateNum(new ArrayList<>(List.of(x-j,y+j))));
                     }
                     else{
@@ -47,7 +47,7 @@ public class Bishop extends Piece{
                     }
                 }
                 else if (i == 3){
-                    if (this.isPossible(x+j, y-j)){
+                    if (isPossible(x+j, y-j)){
                         moves.add(translateNum(new ArrayList<>(List.of(x+j,y-j))));
                     }
                     else{

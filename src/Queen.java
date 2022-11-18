@@ -23,7 +23,7 @@ public class Queen extends Piece{
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 if(i == 0){
-                    if (this.isPossible(x+j, y+j)){
+                    if (isPossible(x+j, y+j)){
                         moves.add(translateNum(new ArrayList<>(List.of(x+j,y+j))));
                     }
                     else{
@@ -31,7 +31,7 @@ public class Queen extends Piece{
                     }
                 }
                 else if (i == 1){
-                    if (this.isPossible(x-j, y-j)){
+                    if (isPossible(x-j, y-j)){
                         moves.add(translateNum(new ArrayList<>(List.of(x-j,y-j))));
                     }
                     else{
@@ -39,7 +39,7 @@ public class Queen extends Piece{
                     }
                 }
                 else if (i == 2){
-                    if (this.isPossible(x-j, y+j)){
+                    if (isPossible(x-j, y+j)){
                         moves.add(translateNum(new ArrayList<>(List.of(x-j,y+j))));
                     }
                     else{
@@ -47,7 +47,7 @@ public class Queen extends Piece{
                     }
                 }
                 if (i == 3){
-                    if (this.isPossible(x+j, y-j)){
+                    if (isPossible(x+j, y-j)){
                         moves.add(translateNum(new ArrayList<>(List.of(x+j,y-j))));
                     }
                     else{
@@ -55,7 +55,7 @@ public class Queen extends Piece{
                     }
                 }
                 if(i == 4){
-                    if (this.isPossible(x+j, y)){
+                    if (isPossible(x+j, y)){
                         moves.add(translateNum(new ArrayList<>(List.of(x+j,y))));
                     }
                     else{
@@ -63,7 +63,7 @@ public class Queen extends Piece{
                     }
                 }
                 else if (i == 5){
-                    if (this.isPossible(x-j, y)){
+                    if (isPossible(x-j, y)){
                         moves.add(translateNum(new ArrayList<>(List.of(x-j,y))));
                     }
                     else{
@@ -71,7 +71,7 @@ public class Queen extends Piece{
                     }
                 }
                 else if (i == 6){
-                    if (this.isPossible(x, y+j)){
+                    if (isPossible(x, y+j)){
                         moves.add(translateNum(new ArrayList<>(List.of(x,y+j))));
                     }
                     else{
@@ -79,7 +79,7 @@ public class Queen extends Piece{
                     }
                 }
                 else if (i == 7){
-                    if (this.isPossible(x, y-j)){
+                    if (isPossible(x, y-j)){
                         moves.add(translateNum(new ArrayList<>(List.of(x,y-j))));
                     }
                     else{
