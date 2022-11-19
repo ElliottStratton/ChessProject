@@ -97,7 +97,7 @@ public class Board {
      * @return the piece at any location on the board
      */
     public Piece getPiece(int x, int y) {
-        return board[y][x];
+        return board[x][y];
     }
 
 
@@ -116,7 +116,7 @@ public class Board {
      * @param y
      */
     public void occupy(Piece piece, int x, int y) {
-        board[y][x] = piece;
+        board[x][y] = piece;
     }
 
     /**
@@ -125,7 +125,7 @@ public class Board {
      * @param y
      */
     public void unOccupy(int x, int y) {
-        board[y][x] = null;
+        board[x][y] = null;
     }
 
     /**
