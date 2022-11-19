@@ -97,7 +97,16 @@ public class Board {
      * @return the piece at any location on the board
      */
     public Piece getPiece(int x, int y) {
-        return board[x][y];
+        return board[y][x];
+    }
+
+
+    /**
+     * A basic getter for the 2d array Board
+     * @return a 2d array of the current board
+     * */
+    public Piece[][] getBoard() {
+        return board;
     }
 
     /**
@@ -107,7 +116,7 @@ public class Board {
      * @param y
      */
     public void occupy(Piece piece, int x, int y) {
-        board[x][y] = piece;
+        board[y][x] = piece;
     }
 
     /**
@@ -116,7 +125,7 @@ public class Board {
      * @param y
      */
     public void unOccupy(int x, int y) {
-        board[x][y] = null;
+        board[y][x] = null;
     }
 
     /**

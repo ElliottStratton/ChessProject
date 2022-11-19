@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ConsoleDriver {
@@ -72,6 +74,7 @@ public class ConsoleDriver {
 
         System.out.println("Initial Board");
         System.out.println(game.getBoard().toString()); //For testing purposes
+        System.out.println(Arrays.deepToString(game.getBoard().getBoard())); //For testing purposes
 
         while(!hasWon){
             String player = getPlayer(game.isCurrentPlayer());
@@ -84,6 +87,7 @@ public class ConsoleDriver {
                 System.out.println("x " + x);
                 int y = convertY(currLoc.charAt(1));
                 System.out.println("y " + y);
+                System.out.println(game.getBoard().getPiece(x, y));
 
                 System.out.println("Enter coordinates you want to move: ");
                 String newLoc = scnr.next();
@@ -91,6 +95,8 @@ public class ConsoleDriver {
                 System.out.println("newX " + newX);
                 int newY = convertY(newLoc.charAt(1));
                 System.out.println("newY " + newY);
+                System.out.println(game.getBoard().getPiece(newX, newY));
+
 
                 try{
                     game.nextMove(x,y,newX,newY);
