@@ -10,12 +10,14 @@ public abstract class Piece {
     int x;
     int y;
     Board currBoard;
+    int value;
 
     /**
      * default constructor
      */
     public Piece() {
     }
+
 
     /**
      *
@@ -24,11 +26,12 @@ public abstract class Piece {
      * @param y y          "
      * @param b Which Board is the piece on
      */
-    public Piece(boolean color, int x, int y, Board b) {
+    public Piece(boolean color, int x, int y, int value, Board b) {
         this.white = color;
         this.x = x;
         this.y = y;
         currBoard = b;
+        this.value = value;
     }
 
     /**
@@ -159,6 +162,14 @@ public abstract class Piece {
         {
             return false;
         }
+    }
+
+
+    /**
+     * @return the variable value
+     * */
+    public int getValue() {
+        return value;
     }
 
 

@@ -9,8 +9,8 @@ public class Bishop extends Piece{
      * @param y initial y position
      * @param b board that the pawn will be on
      */
-    public Bishop(boolean color, int x, int y, Board b) {
-        super(color, x, y, b);
+    public Bishop(boolean color, int x, int y, int value, Board b) {
+        super(color, x, y,value, b);
         b.occupy(this, x, y);
     }
 

@@ -10,8 +10,8 @@ public class Rook extends Piece{
      * @param y     initial y position
      * @param b     board that the pawn will be on
      */
-    public Rook(boolean color, int x, int y, Board b) {
-        super(color, x, y, b);
+    public Rook(boolean color, int x, int y, int value, Board b) {
+        super(color, x, y, value, b);
         b.occupy(this,x,y);
     }
 
