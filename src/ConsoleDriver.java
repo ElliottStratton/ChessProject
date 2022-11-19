@@ -70,6 +70,7 @@ public class ConsoleDriver {
         Game game = new Game();
         boolean hasWon = false;
 
+        System.out.println("Initial Board");
         System.out.println(game.getBoard().toString()); //For testing purposes
 
         while(!hasWon){
