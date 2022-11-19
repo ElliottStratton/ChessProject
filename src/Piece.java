@@ -164,8 +164,8 @@ public abstract class Piece {
         }
     }
 
-
     /**
+     * A getter for the variable value
      * @return the variable value
      * */
     public int getValue() {
