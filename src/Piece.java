@@ -107,12 +107,44 @@ public abstract class Piece {
         {
             throw new IllegalArgumentException("Desired location is outside the board. Please enter a valid location");
         }
+        else if(capture(x,y) != null){
+            Piece p = capture(x,y);
+            currBoard.unOccupy(x, y);
+            currBoard.unOccupy(this.x,this.y);
+            currBoard.occupy(this, x,y);
+            currBoard.arrPieces.remove(p);
+        }
         else if(isPossible(x, y)) {
-            currBoard.unOccupy(getX(), getY());
+            currBoard.unOccupy(x, y);
+            currBoard.unOccupy(this.x,this.y);
             setPosition(x, y);
             currBoard.occupy(this, x, y);
         }
     }
+
+
+    /**
+     * This returns a specific piece of the opponent if it is able to be captured by this specific piece
+     * @return a Piece that is null if there is no piece that is able to be captured
+     * */
+    public Piece capture(int x, int y){
+        Piece capturePiece = null;
+        ArrayList<Piece> pieces = new ArrayList<>();
+        for (Piece p : currBoard.arrPieces) {
+            if (p.white != this.white){
+                pieces.add(p);
+            }
+        }
+
+        for (Piece cP: pieces){
+            if (x == cP.x && y == cP.y){
+                capturePiece = cP;
+                break;
+            }
+        }
+        return capturePiece;
+    }
+
 
     /**
      * Ensures that a piece does not try to move to the spot it currently occupies

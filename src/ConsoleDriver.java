@@ -73,14 +73,15 @@ public class ConsoleDriver {
         boolean hasWon = false;
 
         System.out.println("Initial Board");
-        System.out.println(game.getBoard().toString()); //For testing purposes
-        System.out.println(Arrays.deepToString(game.getBoard().getBoard())); //For testing purposes
+//        System.out.println(game.getBoard().toString()); //For testing purposes
+//        System.out.println(Arrays.deepToString(game.getBoard().getBoard())); //For testing purposes
 
         while(!hasWon){
             String player = getPlayer(game.isCurrentPlayer());
 
             boolean valid = false;
             while(!valid){
+                System.out.println(game.getBoard().toString());
                 System.out.println("Enter initial piece's coordinates: ");
                 String currLoc = scnr.next();
                 int x = convertX(currLoc.charAt(0));

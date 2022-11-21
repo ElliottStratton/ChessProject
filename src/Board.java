@@ -137,6 +137,7 @@ public class Board {
     public String toString() {
         String b = "";
         for (int i = 0; i < 8; i++) {
+            b = b + (8-(i) + " ");
             for (int j = 0; j < 8; j++) {
                 if (board[i][j] == null) {
                     b = b + "0 ";
@@ -181,12 +182,11 @@ public class Board {
                 }
             }
             if (i<7){
-                b = b + "\n---------------\n";
+                b = b + "\n  ---------------\n";
             }
         }
+        b = b + ("\n  A B C D E F G H");
         b = b + "\n";
         return b;
     }
-
-
 }
