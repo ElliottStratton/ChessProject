@@ -1,5 +1,3 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class ConsoleDriver {
@@ -81,22 +79,24 @@ public class ConsoleDriver {
 
             boolean valid = false;
             while(!valid){
-                System.out.println(game.getBoard().toString());
+                System.out.println(game.getBoard().toString());//For testing purposes
+
+                System.out.println(player + "'s turn to move");
                 System.out.println("Enter initial piece's coordinates: ");
                 String currLoc = scnr.next();
-                int x = convertX(currLoc.charAt(0));
+                int x = convertX(currLoc.charAt(0));//For testing purposes
                 System.out.println("x " + x);
-                int y = convertY(currLoc.charAt(1));
+                int y = convertY(currLoc.charAt(1));//For testing purposes
                 System.out.println("y " + y);
-                System.out.println(game.getBoard().getPiece(x, y));
+                System.out.println(game.getBoard().getPiece(x, y));//For testing purposes
 
                 System.out.println("Enter coordinates you want to move: ");
                 String newLoc = scnr.next();
-                int newX = convertX(newLoc.charAt(0));
+                int newX = convertX(newLoc.charAt(0));//For testing purposes
                 System.out.println("newX " + newX);
-                int newY = convertY(newLoc.charAt(1));
+                int newY = convertY(newLoc.charAt(1));//For testing purposes
                 System.out.println("newY " + newY);
-                System.out.println(game.getBoard().getPiece(newX, newY));
+                System.out.println(game.getBoard().getPiece(newX, newY));//For testing purposes
 
 
                 try{

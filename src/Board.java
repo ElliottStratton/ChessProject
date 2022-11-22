@@ -102,6 +102,17 @@ public class Board {
 
 
     /**
+     * Moves a piece from where it is to a possible desired location
+     * @param y the y coordinate for the desired location
+     * @param x the x coordinate for the desired location
+     * @param p the piece that needs to be moved
+     * */
+    public void movePiece(Piece p, int x, int y){
+        p.move(x,y);
+    }
+
+
+    /**
      * A basic getter for the 2d array Board
      * @return a 2d array of the current board
      * */
