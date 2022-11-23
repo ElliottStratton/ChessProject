@@ -95,6 +95,7 @@ public abstract class Piece {
      * @param y                 "
      */
     public void move(int x, int y) throws IllegalArgumentException{
+        System.out.println("Is Possible: " + isPossible(x,y));
         if(sameSpot(x,y))
         {
             throw new IllegalArgumentException("Coordinates to move are in the same spot.");
@@ -119,6 +120,10 @@ public abstract class Piece {
             currBoard.unOccupy(this.x,this.y);
             setPosition(x, y);
             currBoard.occupy(this, x, y);
+        }
+        else
+        {
+            throw new IllegalArgumentException("The move is not possible.");
         }
     }
 

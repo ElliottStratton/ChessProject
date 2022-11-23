@@ -89,6 +89,7 @@ public class ConsoleDriver {
                 int y = convertY(currLoc.charAt(1));//For testing purposes
                 System.out.println("y " + y);
                 //System.out.println(game.getBoard().getPiece(x, y));//For testing purposes
+                // System.out.println("Possible moves: " + game.getBoard().getPiece(x, y).possibleMoves()); // for testing
 
                 System.out.println("Enter coordinates you want to move: ");
                 String newLoc = scnr.next();
