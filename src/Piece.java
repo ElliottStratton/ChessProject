@@ -77,7 +77,7 @@ public abstract class Piece {
     public ArrayList<String> possibleMoves() {
         ArrayList<String> moves = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
+            for (int j = 7; j >= 0; j--) {
                 if(isPossible(i,j)) {
                     ArrayList<Integer> nums = new ArrayList<>();
                     nums.add(i);
