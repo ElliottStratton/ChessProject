@@ -88,7 +88,7 @@ public class ConsoleDriver {
                 System.out.println("x " + x);
                 int y = convertY(currLoc.charAt(1));//For testing purposes
                 System.out.println("y " + y);
-                System.out.println(game.getBoard().getPiece(x, y));//For testing purposes
+                //System.out.println(game.getBoard().getPiece(x, y));//For testing purposes
 
                 System.out.println("Enter coordinates you want to move: ");
                 String newLoc = scnr.next();
@@ -96,7 +96,7 @@ public class ConsoleDriver {
                 System.out.println("newX " + newX);
                 int newY = convertY(newLoc.charAt(1));//For testing purposes
                 System.out.println("newY " + newY);
-                System.out.println(game.getBoard().getPiece(newX, newY));//For testing purposes
+               // System.out.println(game.getBoard().getPiece(newX, newY));//For testing purposes
 
 
                 try{

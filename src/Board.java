@@ -146,12 +146,12 @@ public class Board {
      */
     @Override
     public String toString() {
-        String b = "";
+        String b = "\n";
         for (int i = 0; i < 8; i++) {
             b = b + (8-(i) + " ");
             for (int j = 0; j < 8; j++) {
                 if (board[i][j] == null) {
-                    b = b + " 0  ";
+                    b = b + (j == 0 ? " " : "") + " 0 " + (j == 7 ? "" : "|") + " ";
                 } else {
                     if (board[i][j]instanceof Pawn) {
                         if(board[i][j].white) {
@@ -159,44 +159,56 @@ public class Board {
                         } else {
                             b = b + " bP ";
                         }
+                        String end = (j == 7 ? "" : "|");
+                        b += end;
                     } else if (board[i][j]instanceof Rook) {
                         if(board[i][j].white) {
                             b = b + " wR ";
                         } else {
                             b = b + " bR ";
                         }
+                        String end = (j == 7 ? "" : "|");
+                        b += end;
                     } else if (board[i][j]instanceof King) {
                         if(board[i][j].white) {
                             b = b + " wK ";
                         } else {
                             b = b + " bK ";
                         }
+                        String end = (j == 7 ? "" : "|");
+                        b += end;
                     } else if (board[i][j]instanceof Queen) {
                         if(board[i][j].white) {
                             b = b + " wQ ";
                         } else {
                             b = b + " bQ ";
                         }
+                        String end = (j == 7 ? "" : "|");
+                        b += end;
                     } else if (board[i][j]instanceof Bishop) {
                         if(board[i][j].white) {
                             b = b + " wB ";
                         } else {
                             b = b + " bB ";
                         }
+                        String end = (j == 7 ? "" : "|");
+                        b += end;
                     } else if (board[i][j]instanceof Knight) {
                         if (board[i][j].white) {
                             b = b + " wH ";
                         } else {
                             b = b + " bH ";
                         }
+                        String end = (j == 7 ? "" : "|");
+                        b += end;
                     }
                 }
             }
             if (i<7){
-                b = b + "\n  ---------------------------------\n";
+                b = b + "\n  -----------------------------------------\n";
             }
         }
-        b = b + ("\n   A   B   C   D   E   F   G   H");
+        b = b + ("\n   A    B    C    D    E    F    G    H");
         b = b + "\n";
         return b;
     }

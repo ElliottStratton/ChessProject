@@ -40,10 +40,16 @@ public class Game {
      * @param y2 where you want to move in the y
      */
     public void nextMove(int x1, int y1, int x2, int y2) throws IllegalArgumentException {
+        if(x1 < 0 || y1 < 0 || x1 > 7 || y1 > 7)
+        {
+            throw new IllegalArgumentException("Initial piece coordinates are out of bounds.");
+        }
+
         Piece currPiece = board.getPiece(x1,y1);
         if (currPiece.white != currentPlayer){
             throw new IllegalArgumentException("This is not your piece to move.");
         }
+
         else{
             try{
                 currPiece.move(x2,y2); //move() throws an IllegalArgumentException with a message for each possible incorrect solution

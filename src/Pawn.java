@@ -73,18 +73,71 @@ public class Pawn extends Piece {
 
     /**
      * Takes a possible move and checks if it is valid
-     * @param x is the x coordinate of a possible move
-     * @param y is the y coordinate of a possible move
+     * @param newX is the x coordinate of a possible move
+     * @param newY is the y coordinate of a possible move
      * @return true if a specific move is possible
      * */
-    public boolean isPossible(int x, int y) {
-        boolean possible = false;
-        if (sameSpot(x,y) || sameColorMove(x,y) || moveOutsideBoard(x,y)){
-            return false;
+    public boolean isPossible(int newX, int newY) {
+        int dx = newX - x;
+        int dy = newY - y;
+        if(white) // white is at the bottom
+        {
+            if(firstMove)
+            {
+                if (dx == 0)
+                {
+                    if(dy < 0 && dy >= -2)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+//                if(dx == 0)
+//                {
+//
+//                }
+//                else if (dx == 1)
+//                {
+//
+//                }
+//                else if (dx == -1)
+//                {
+//
+//                }
+//                else
+//                {
+//                    return false;
+//                }
+                return true;
+            }
         }
-        else if(currBoard.getPiece(x,y) == null || currBoard.getPiece(x,y).white == this.white){
-            return true;
+        else
+        {
+            if(firstMove)
+            {
+                if (dx == 0)
+                {
+                    if(dy > 0 && dy <= 2)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return true;
+            }
         }
-        return possible;
+        return true;
     }
 }
