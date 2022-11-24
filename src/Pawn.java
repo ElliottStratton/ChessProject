@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Pawn extends Piece {
-    private boolean firstMove;
     /**
      * default constructor
      *
@@ -15,13 +14,6 @@ public class Pawn extends Piece {
     public Pawn(boolean color, int x, int y, int value, Board b) {
         super(color, x, y, value, b);
         b.occupy(this, x, y);
-        firstMove = true;
-    }
-
-    @Override
-    public void move(int x, int y) {
-        super.move(x, y);
-        firstMove = false;
     }
 
     /**

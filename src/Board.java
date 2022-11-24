@@ -141,6 +141,15 @@ public class Board {
 
     /**
      *
+     * @return true if king is in checkmate, false otherwise
+     */
+    public boolean checkmate() //For testing and AI purposes
+    {
+        return false;
+    }
+
+    /**
+     *
      * @return a string board where each piece is two letters, the first is either black or white
      * the second tells what type of piece it is
      */

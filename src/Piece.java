@@ -11,6 +11,7 @@ public abstract class Piece {
     int y;
     Board currBoard;
     int value;
+    boolean firstMove = true;
 
     /**
      * default constructor
@@ -114,12 +115,14 @@ public abstract class Piece {
             currBoard.unOccupy(this.x,this.y);
             currBoard.occupy(this, x,y);
             currBoard.arrPieces.remove(p);
+            firstMove = false;
         }
         else if(isPossible(x, y)) {
             currBoard.unOccupy(x, y);
             currBoard.unOccupy(this.x,this.y);
             setPosition(x, y);
             currBoard.occupy(this, x, y);
+            firstMove = false;
         }
         else
         {
