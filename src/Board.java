@@ -164,49 +164,49 @@ public class Board {
                 } else {
                     if (board[i][j]instanceof Pawn) {
                         if(board[i][j].white) {
-                            b = b + " wP ";
+                            b = b + " \u2659 ";
                         } else {
-                            b = b + " bP ";
+                            b = b + " \u265F ";
                         }
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof Rook) {
                         if(board[i][j].white) {
-                            b = b + " wR ";
+                            b = b + " \u2656 ";
                         } else {
-                            b = b + " bR ";
+                            b = b + " \u265C ";
                         }
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof King) {
                         if(board[i][j].white) {
-                            b = b + " wK ";
+                            b = b + " \u2654 ";
                         } else {
-                            b = b + " bK ";
+                            b = b + " \u265A ";
                         }
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof Queen) {
                         if(board[i][j].white) {
-                            b = b + " wQ ";
+                            b = b + " \u2655 ";
                         } else {
-                            b = b + " bQ ";
+                            b = b + " \u265B ";
                         }
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof Bishop) {
                         if(board[i][j].white) {
-                            b = b + " wB ";
+                            b = b + " \u2657 ";
                         } else {
-                            b = b + " bB ";
+                            b = b + " \u265D ";
                         }
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof Knight) {
                         if (board[i][j].white) {
-                            b = b + " wH ";
+                            b = b + " \u2658 ";
                         } else {
-                            b = b + " bH ";
+                            b = b + " \u265E ";
                         }
                         String end = (j == 7 ? "" : "|");
                         b += end;
