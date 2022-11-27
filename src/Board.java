@@ -160,7 +160,7 @@ public class Board {
             b = b + (8-(i) + " ");
             for (int j = 0; j < 8; j++) {
                 if (board[i][j] == null) {
-                    b = b + (j == 0 ? " " : "") + " 0 " + (j == 7 ? "" : "|") + " ";
+                    b = b  + "    " + (j == 7 ? "" : "|");
                 } else {
                     if (board[i][j]instanceof Pawn) {
                         if(board[i][j].white) {

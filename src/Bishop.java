@@ -34,7 +34,7 @@ public class Bishop extends Piece{
         int dy = newY - y;
         Board b = currBoard;
 
-        if(abs(dx) == abs(dy))
+        if(abs(dx) == abs(dy) && abs(dx) != 0)
         {
             if(dy!= 0 && dx/dy == 1)
             {
@@ -121,8 +121,8 @@ public class Bishop extends Piece{
                 else
                 {
                     boolean isPossible = true;
-                    for (int d = 1; d <= dx; d++) {
-                        Piece p = b.getPiece(x - d, y + d);
+                    for (int d = -1; d >= dx; d--) {
+                        Piece p = b.getPiece(x + d, y - d);
                         if (p == null) {
                             continue;
                         }

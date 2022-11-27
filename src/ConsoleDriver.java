@@ -97,6 +97,7 @@ public class ConsoleDriver {
                 System.out.println("newX " + newX);
                 int newY = convertY(newLoc.charAt(1));//For testing purposes
                 System.out.println("newY " + newY);
+
                // System.out.println(game.getBoard().getPiece(newX, newY));//For testing purposes
 
 
