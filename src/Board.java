@@ -174,7 +174,7 @@ public class Board {
                     b = b  + "\u2003  " + (j == 7 ? "" : "|");
                 } else {
                     if (board[i][j]instanceof Pawn) {
-                        if(board[i][j].white) {
+                        if(!board[i][j].white) {
                             b = b + " \u2659 ";
                         } else {
                             b = b + " \u265F ";
@@ -182,7 +182,7 @@ public class Board {
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof Rook) {
-                        if(board[i][j].white) {
+                        if(!board[i][j].white) {
                             b = b + " \u2656 ";
                         } else {
                             b = b + " \u265C ";
@@ -190,7 +190,7 @@ public class Board {
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof King) {
-                        if(board[i][j].white) {
+                        if(!board[i][j].white) {
                             b = b + " \u2654 ";
                         } else {
                             b = b + " \u265A ";
@@ -198,7 +198,7 @@ public class Board {
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof Queen) {
-                        if(board[i][j].white) {
+                        if(!board[i][j].white) {
                             b = b + " \u2655 ";
                         } else {
                             b = b + " \u265B ";
@@ -206,7 +206,7 @@ public class Board {
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof Bishop) {
-                        if(board[i][j].white) {
+                        if(!board[i][j].white) {
                             b = b + " \u2657 ";
                         } else {
                             b = b + " \u265D ";
@@ -214,7 +214,7 @@ public class Board {
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof Knight) {
-                        if (board[i][j].white) {
+                        if (!board[i][j].white) {
                             b = b + " \u2658 ";
                         } else {
                             b = b + " \u265E ";
