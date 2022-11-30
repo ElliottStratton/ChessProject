@@ -281,5 +281,4 @@ public abstract class Piece {
         }
         return location;
     }
-
 }
