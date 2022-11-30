@@ -171,7 +171,7 @@ public class Board {
             b = b + (8-(i) + " ");
             for (int j = 0; j < 8; j++) {
                 if (board[i][j] == null) {
-                    b = b  + "    " + (j == 7 ? "" : "|");
+                    b = b  + "\u2003  " + (j == 7 ? "" : "|");
                 } else {
                     if (board[i][j]instanceof Pawn) {
                         if(board[i][j].white) {
@@ -225,10 +225,10 @@ public class Board {
                 }
             }
             if (i<7){
-                b = b + "\n  -----------------------------------------\n";
+                b = b + "\n  ------------------------------------\n";
             }
         }
-        b = b + ("\n   A    B    C    D    E    F    G    H");
+        b = b + ("\n\u2003\u2003A\u2002   B\u2003  C\u2003  D\u2003  E\u2003  F\u2003  G\u2003  H");
         b = b + "\n";
         return b;
     }
