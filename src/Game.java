@@ -1,8 +1,10 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Game {
     private Board board;
     private boolean currentPlayer;
+    private Map<Piece, ArrayList<String>> movesOutOfCheck;
+    private Map<Piece, String> movesIntoCheck;
 
     /**
      * Default constructor
@@ -11,6 +13,8 @@ public class Game {
     public Game() {
         board = new Board();
         currentPlayer = true; // True is player white
+        movesOutOfCheck = new HashMap<>();
+        movesIntoCheck = new HashMap<>();
     }
 
     /**
@@ -19,16 +23,68 @@ public class Game {
      */
     public boolean checkmate()
     {
-        return false;
+        if (movesOutOfCheck.isEmpty()){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public void findMovesOutOfCheck(boolean player){
+        for (Piece p:board.arrPieces){ //All pieces on the board
+            ArrayList<String> movesOut = new ArrayList<>();
+            if (p.white == player && !movesIntoCheck.isEmpty()){ //Just the current Player's pieces
+                for(String move : p.possibleMoves()){ //All possible moves of that piece
+                    Board nB = new Board(board);
+                    nB.movePiece(p, p.x, p.y);
+                    if (check(player, nB)){
+                        movesOut.add(move);
+                    }
+                }
+            }
+            movesOutOfCheck.put(p,movesOut);
+        }
     }
 
     /**
      *
      * @return true if king is in check, false otherwise
      */
-    public boolean check()
+    public boolean check(boolean player, Board board)
     {
-        return false;
+        movesIntoCheck.clear();
+        movesOutOfCheck.clear();
+        findMovesOutOfCheck(player);
+
+        boolean check = false;
+        Piece king = new King();
+        for(Piece p : board.arrPieces){ //Find the King of the current player
+            if (p.white == player){
+                if (p instanceof King){
+                    king = p;
+                }
+            }
+        }
+        String kingLocation = king.translateNum(new ArrayList<Integer>(List.of(king.x,king.y)));
+
+        for (Piece p : board.arrPieces){ //All pieces on the board
+            if (p.white != player) {
+                String checkMove = "";
+                if (!p.possibleMoves().isEmpty()) {
+                    for (String move : p.possibleMoves()) { //All possible moves of the opponent's piece(s)
+                        if (Objects.equals(move, kingLocation)) {
+                            checkMove = move;
+                            check = true;
+                        }
+                    }
+                }
+                if (check){
+                    movesIntoCheck.put(p, checkMove);
+                }
+            }
+        }
+        return check;
     }
 
 
