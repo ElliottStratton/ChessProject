@@ -8,6 +8,9 @@ public class King extends Piece{
         b.occupy(this,x,y);
     }
 
+    public King(){
+    }
+
     /**
      * This returns a list of all possible moves for this specific piece
      * @return ArrayList<String> is the arraylist of possible moves
