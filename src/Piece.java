@@ -47,6 +47,14 @@ public abstract class Piece {
 
     /**
      *
+     *
+     * */
+    public void undoMove(int prevX, int prevY){
+        setPosition(prevX,prevY);
+    }
+
+    /**
+     *
      * @return the X coordinate of the current piece
      */
     public int getX() {
