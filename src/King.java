@@ -25,33 +25,6 @@ public class King extends Piece{
                 }
             }
         }
-
-        //If the above for loops don't work, the lines below definitely will.
-//
-//        if (this.isPossible(x-1, y)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x-1,y))));
-//        }
-//        if (this.isPossible(x-1, y+1)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x-1,y+1))));
-//        }
-//        if (this.isPossible(x, y+1)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x,y+1))));
-//        }
-//        if (this.isPossible(x+1, y+1)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x+1,y+1))));
-//        }
-//        if (this.isPossible(x+1, y)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x+1,y))));
-//        }
-//        if (this.isPossible(x+1, y-1)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x+1,y-1))));
-//        }
-//        if (this.isPossible(x, y-1)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x,y-1))));
-//        }
-//        if (this.isPossible(x-1, y-1)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x-1,y-1))));
-//        }
         return moves;
     }
 
