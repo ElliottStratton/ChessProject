@@ -144,26 +144,28 @@ public class Game {
     /**
      * castling method will allow for the castle move if the requirements for the rook and king positions is met
      */
-    public void castling(boolean player, String kingMove) {
+    public void castling(String kingMove) { //TODO how do we want these special moves to operate?
         Piece king = new King();
         for (Piece piece : board.arrPieces) { //Finds the King
             if (piece instanceof King){
                 king = piece;
             }
         }
-        if (king.firstMove) { //TODO make sure the spaces in between he king and the rook are all clear
-            int x = king.translateLetNum(kingMove).get(0);
-            int y = king.translateLetNum(kingMove).get(1);
+
+        int x = king.translateLetNum(kingMove).get(0);
+        int y = king.translateLetNum(kingMove).get(1);
+
+        if (king.firstMove) { //if the king hasn't moved
             Piece thisRook;
-            if (x < king.x && y == king.y) {
+            if (x < king.x && y == king.y) { //King side castle
                 thisRook = board.getPiece(0, y);
-                if (thisRook != null && thisRook.firstMove) {
+                if (thisRook != null && thisRook.firstMove && board.getPiece(1,y) == null && board.getPiece(2, y) == null && board.getPiece(3, y) == null){ //if a rook is there, if it has not moved, and if all the spaces in between them are empty
                     king.setPosition(x, y);
                     thisRook.setPosition(thisRook.x+3, thisRook.y );
                 }
-            } else {
+            } else if(x > king.x && y == king.y) { //Queen side castle
                 thisRook = board.getPiece(8, y);
-                if (thisRook != null && thisRook.firstMove) {
+                if (thisRook != null && thisRook.firstMove && board.getPiece(7,y) == null && board.getPiece(6, y) == null) { //if a rook is there, if it has not moved, and if all the spaces in between them are empty
                     king.setPosition(x, y);
                     thisRook.setPosition(thisRook.x-2, thisRook.y );
                 }
@@ -175,13 +177,13 @@ public class Game {
     }
 
     /**
-     * pawnPromotion method will prompt the player to choose which piece to promote a pawn to if it reaches the opposite
-     * side of the board.
-     */
-    public void pawnPromotion(boolean player, Piece pawn) {
+     * Takes in a pawn and checks if a promotion is possible
+     * @param player the current player
+     * @param pawn the pawn to check for a promotion
+     * @return true if a promotion is possible
+     * */
+    public boolean promotionPossible(boolean player, Piece pawn){
         boolean valid = false;
-        boolean promotion = false;
-        Scanner scnr = new Scanner(System.in);
         if (player){
             if (pawn.y == 8){
                 valid = true;
@@ -192,10 +194,22 @@ public class Game {
                 valid = true;
             }
         }
+        return valid;
+    }
 
-        if(valid) {
-            while(!promotion) {
-                System.out.println("Would you like to promote this pawn to a  queen, rook, bishop, or knight?");
+    /**
+     * pawnPromotion method will prompt the player to choose which piece to promote a pawn to if it reaches the opposite
+     * side of the board.
+     * @param player
+     * @param pawn
+     */
+    public void pawnPromotion(boolean player, Piece pawn) {
+        boolean promotion = false;
+        Scanner scnr = new Scanner(System.in);
+
+        if(promotionPossible(player, pawn)) { //if a pawn is in the place to be promoted
+            System.out.println("Would you like to promote this pawn to a  queen, rook, bishop, or knight?");
+            while(!promotion) { //to ensure a valid input
                 String choice = scnr.next().toLowerCase();
                 if (choice.equals("queen")) {
                     board.board[pawn.y][pawn.x] = null;
@@ -220,7 +234,7 @@ public class Game {
                 } else {
                     System.out.println("Invalid piece entry. Please reenter choice.");
                 }
-            }
+            } //end while
         }
     }
 
