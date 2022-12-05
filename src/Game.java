@@ -144,14 +144,84 @@ public class Game {
     /**
      * castling method will allow for the castle move if the requirements for the rook and king positions is met
      */
-    public void castling() {
+    public void castling(boolean player, String kingMove) {
+        Piece king = new King();
+        for (Piece piece : board.arrPieces) { //Finds the King
+            if (piece instanceof King){
+                king = piece;
+            }
+        }
+        if (king.firstMove) { //TODO make sure the spaces in between he king and the rook are all clear
+            int x = king.translateLetNum(kingMove).get(0);
+            int y = king.translateLetNum(kingMove).get(1);
+            Piece thisRook;
+            if (x < king.x && y == king.y) {
+                thisRook = board.getPiece(0, y);
+                if (thisRook != null && thisRook.firstMove) {
+                    king.setPosition(x, y);
+                    thisRook.setPosition(thisRook.x+3, thisRook.y );
+                }
+            } else {
+                thisRook = board.getPiece(8, y);
+                if (thisRook != null && thisRook.firstMove) {
+                    king.setPosition(x, y);
+                    thisRook.setPosition(thisRook.x-2, thisRook.y );
+                }
+            }
+        }
+        else{
+            System.out.println("Invalid castling move");
+        }
     }
 
     /**
      * pawnPromotion method will prompt the player to choose which piece to promote a pawn to if it reaches the opposite
      * side of the board.
      */
-    public void pawnPromotion() {
+    public void pawnPromotion(boolean player, Piece pawn) {
+        boolean valid = false;
+        boolean promotion = false;
+        Scanner scnr = new Scanner(System.in);
+        if (player){
+            if (pawn.y == 8){
+                valid = true;
+            }
+        }
+        else{
+            if (pawn.y == 1){
+                valid = true;
+            }
+        }
+
+        if(valid) {
+            while(!promotion) {
+                System.out.println("Would you like to promote this pawn to a  queen, rook, bishop, or knight?");
+                String choice = scnr.next().toLowerCase();
+                if (choice.equals("queen")) {
+                    board.board[pawn.y][pawn.x] = null;
+                    Queen queen = new Queen(pawn.white, pawn.x, pawn.y, 900, board);
+                    queen.firstMove = false;
+                    promotion = true;
+                } else if (choice.equals("rook")) {
+                    board.board[pawn.y][pawn.x] = null;
+                    Rook rook = new Rook(pawn.white, pawn.x, pawn.y, 500, board);
+                    rook.firstMove = false;
+                    promotion = true;
+                } else if (choice.equals("bishop")) {
+                    board.board[pawn.y][pawn.x] = null;
+                    Bishop bishop = new Bishop(pawn.white, pawn.x, pawn.y, 300, board);
+                    bishop.firstMove = false;
+                    promotion = true;
+                } else if (choice.equals("knight")) {
+                    board.board[pawn.y][pawn.x] = null;
+                    Queen queen = new Queen(pawn.white, pawn.x, pawn.y, 900, board);
+                    queen.firstMove = false;
+                    promotion = true;
+                } else {
+                    System.out.println("Invalid piece entry. Please reenter choice.");
+                }
+            }
+        }
     }
 
     /**

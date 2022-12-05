@@ -45,13 +45,6 @@ public abstract class Piece {
         this.y = y;
     }
 
-    /**
-     *
-     *
-     * */
-    public void undoMove(int prevX, int prevY){
-        setPosition(prevX,prevY);
-    }
 
     /**
      *
