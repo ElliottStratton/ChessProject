@@ -33,7 +33,9 @@ public class King extends Piece{
         if(sameSpot(x,y)) {
             return false;
         }
-
+        if (moveOutsideBoard(x, y)){
+            return false;
+        }
         if(sameColorMove(x,y)) {
             return false;
         }

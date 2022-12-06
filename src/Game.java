@@ -20,8 +20,8 @@ public class Game {
     /**
      * @return true if king is in checkmate, false otherwise
      */
-    public boolean checkmate() {
-        if (movesOutOfCheck.isEmpty()) {
+    public boolean checkmate(boolean player, Board board) {
+        if (check(player, board) && movesOutOfCheck.isEmpty()) {
             return true;
         } else {
             return false;
@@ -144,6 +144,10 @@ public class Game {
     /**
      * castling method will allow for the castle move if the requirements for the rook and king positions is met
      */
+    //Make this method add the move to king possible moves
+    //In console driver check if the piece being moved is a King.
+    //If so, check if the move is larger than 1 move away, then find the move and move the rook accordingly
+    //EN PASSANT keep track of the last move and if it was the first move and if the y change is more than 1 and if it is found next to an enemy pawn place the location.y-1 behind it in the possible moves
     public void castling(String kingMove) { //TODO how do we want these special moves to operate?
         Piece king = new King();
         for (Piece piece : board.arrPieces) { //Finds the King
