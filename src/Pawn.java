@@ -17,64 +17,6 @@ public class Pawn extends Piece {
     }
 
     /**
-     * This returns a list of all possible moves for this specific piece
-     * It is assumed that white is always on the bottom
-     * @return ArrayList<String> is the arraylist of possible moves
-     * */
-//    public ArrayList<String> possibleMoves() {
-//        ArrayList<String> moves = new ArrayList<>();
-//        for(int r = 0; r < 8; r++)
-//        {
-//            for(int c = 0; c < 8; c++)
-//            {
-//                if(isPossible(r,c))
-//                {
-//                    moves.add(translateNum(new ArrayList<>(List.of(r, c))));
-//                }
-//            }
-//        }
-//        return moves;
-//        if (white){
-//            if (firstMove){
-//                if (isPossible(x,y+1)){
-//                    moves.add(translateNum(new ArrayList<>(List.of(x, y+1))));
-//                }
-//                if (isPossible(x-1,y+1)){
-//                    moves.add(translateNum(new ArrayList<>(List.of(x-1, y+1))));
-//                }
-//                if (isPossible(x+1,y+1)){
-//                    moves.add(translateNum(new ArrayList<>(List.of(x+1, y+1))));
-//                }
-//            }
-//            else{
-//                if (isPossible(x, y+2)){
-//                    moves.add(translateNum(new ArrayList<>(List.of(x, y+2))));
-//                }
-//            }
-//        }
-//        if (!white){
-//            if (firstMove){
-//                if (isPossible(x,y-1)){
-//                    moves.add(translateNum(new ArrayList<>(List.of(x, y-1))));
-//                }
-//                if (isPossible(x-1,y-1)){
-//                    moves.add(translateNum(new ArrayList<>(List.of(x-1, y-1))));
-//                }
-//                if (isPossible(x+1,y-1)){
-//                    moves.add(translateNum(new ArrayList<>(List.of(x+1, y-1))));
-//                }
-//            }
-//            else{
-//                if (isPossible(x, y-2)){
-//                    moves.add(translateNum(new ArrayList<>(List.of(x, y-2))));
-//                }
-//            }
-//        }
-//        return moves;
-//    }
-
-
-    /**
      * Takes a possible move and checks if it is valid
      * @param newX is the x coordinate of a possible move
      * @param newY is the y coordinate of a possible move

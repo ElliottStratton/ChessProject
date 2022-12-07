@@ -12,73 +12,73 @@ public class Board {
      */
     public Board() {
         board = new Piece[8][8];
-        Rook bROne = new Rook(false,0,0,5,this);
+        Rook bROne = new Rook(false,0,0,500,this);
         arrPieces.add(bROne);
-        Rook bRTwo = new Rook(false,7,0,5,this);
+        Rook bRTwo = new Rook(false,7,0,500,this);
         arrPieces.add(bRTwo);
-        Knight bKOne = new Knight(false,1,0,3,this);
+        Knight bKOne = new Knight(false,1,0,300,this);
         arrPieces.add(bKOne);
-        Knight bKTwo = new Knight(false,6,0,3,this);
+        Knight bKTwo = new Knight(false,6,0,300,this);
         arrPieces.add(bKTwo);
-        Bishop bBOne = new Bishop(false,2,0,3,this);
+        Bishop bBOne = new Bishop(false,2,0,300,this);
         arrPieces.add(bBOne);
-        Bishop bBTwo = new Bishop(false,5,0,3,this);
+        Bishop bBTwo = new Bishop(false,5,0,300,this);
         arrPieces.add(bBTwo);
-        King bKing = new King(false,3,0,18,this);
+        King bKing = new King(false,3,0,1800,this);
         arrPieces.add(bKing);
-        Queen bQueen = new Queen(false,4,0,9,this);
+        Queen bQueen = new Queen(false,4,0,900,this);
         arrPieces.add(bQueen);
 
-        Pawn bPOne = new Pawn(false,0,1, 1,this);
+        Pawn bPOne = new Pawn(false,0,1, 100,this);
         arrPieces.add(bPOne);
-        Pawn bPTwo = new Pawn(false,1,1, 1,this);
+        Pawn bPTwo = new Pawn(false,1,1, 100,this);
         arrPieces.add(bPTwo);
-        Pawn bPThree = new Pawn(false,2,1 , 1,this);
+        Pawn bPThree = new Pawn(false,2,1 , 100,this);
         arrPieces.add(bPThree);
-        Pawn bPFour = new Pawn(false,3,1, 1,this);
+        Pawn bPFour = new Pawn(false,3,1, 100,this);
         arrPieces.add(bPFour);
-        Pawn bPFive = new Pawn(false,4,1, 1,this);
+        Pawn bPFive = new Pawn(false,4,1, 100,this);
         arrPieces.add(bPFive);
-        Pawn bPSix = new Pawn(false,5,1, 1,this);
+        Pawn bPSix = new Pawn(false,5,1, 100,this);
         arrPieces.add(bPSix);
-        Pawn bPSeven = new Pawn(false,6,1, 1,this);
+        Pawn bPSeven = new Pawn(false,6,1, 100,this);
         arrPieces.add(bPSeven);
-        Pawn bPEight = new Pawn(false,7,1, 1,this);
+        Pawn bPEight = new Pawn(false,7,1, 100,this);
         arrPieces.add(bPEight);
 
 
-        Pawn wPOne = new Pawn(true,0,6, 1,this);
+        Pawn wPOne = new Pawn(true,0,6, 100,this);
         arrPieces.add(wPOne);
-        Pawn wPTwo = new Pawn(true,1,6, 1,this);
+        Pawn wPTwo = new Pawn(true,1,6, 100,this);
         arrPieces.add(wPTwo);
-        Pawn wPThree = new Pawn(true,2,6, 1,this);
+        Pawn wPThree = new Pawn(true,2,6, 100,this);
         arrPieces.add(wPThree);
-        Pawn wPFour = new Pawn(true,3,6, 1,this);
+        Pawn wPFour = new Pawn(true,3,6, 100,this);
         arrPieces.add(wPFour);
-        Pawn wPFive = new Pawn(true,4,6, 1,this);
+        Pawn wPFive = new Pawn(true,4,6, 100,this);
         arrPieces.add(wPFive);
-        Pawn wPSix = new Pawn(true,5,6, 1,this);
+        Pawn wPSix = new Pawn(true,5,6, 100,this);
         arrPieces.add(wPSix);
-        Pawn wPSeven = new Pawn(true,6,6, 1,this);
+        Pawn wPSeven = new Pawn(true,6,6, 100,this);
         arrPieces.add(wPSeven);
-        Pawn wPEight = new Pawn(true,7,6, 1,this);
+        Pawn wPEight = new Pawn(true,7,6, 100,this);
         arrPieces.add(wPEight);
 
-        Rook wROne = new Rook(true,0,7,5,this);
+        Rook wROne = new Rook(true,0,7,500,this);
         arrPieces.add(wROne);
-        Rook wRTwo = new Rook(true,7,7,5,this);
+        Rook wRTwo = new Rook(true,7,7,500,this);
         arrPieces.add(wRTwo);
-        Knight wKOne = new Knight(true,1,7,3,this);
+        Knight wKOne = new Knight(true,1,7,300,this);
         arrPieces.add(wKOne);
-        Knight wKTwo = new Knight(true,6,7,3,this);
+        Knight wKTwo = new Knight(true,6,7,300,this);
         arrPieces.add(wKTwo);
-        Bishop wBOne = new Bishop(true,2,7,3,this);
+        Bishop wBOne = new Bishop(true,2,7,300,this);
         arrPieces.add(wBOne);
-        Bishop wBTwo = new Bishop(true,5,7,3,this);
+        Bishop wBTwo = new Bishop(true,5,7,300,this);
         arrPieces.add(wBTwo);
-        King wKing = new King(true,3,7,18,this);
+        King wKing = new King(true,3,7,1800,this);
         arrPieces.add(wKing);
-        Queen wQueen = new Queen(true,4,7,9,this);
+        Queen wQueen = new Queen(true,4,7,900,this);
         arrPieces.add(wQueen);
     }
 
@@ -174,7 +174,7 @@ public class Board {
                     b = b  + "\u2003  " + (j == 7 ? "" : "|");
                 } else {
                     if (board[i][j]instanceof Pawn) {
-                        if(board[i][j].white) {
+                        if(!board[i][j].white) {
                             b = b + " \u2659 ";
                         } else {
                             b = b + " \u265F ";
@@ -182,7 +182,7 @@ public class Board {
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof Rook) {
-                        if(board[i][j].white) {
+                        if(!board[i][j].white) {
                             b = b + " \u2656 ";
                         } else {
                             b = b + " \u265C ";
@@ -190,7 +190,7 @@ public class Board {
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof King) {
-                        if(board[i][j].white) {
+                        if(!board[i][j].white) {
                             b = b + " \u2654 ";
                         } else {
                             b = b + " \u265A ";
@@ -198,7 +198,7 @@ public class Board {
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof Queen) {
-                        if(board[i][j].white) {
+                        if(!board[i][j].white) {
                             b = b + " \u2655 ";
                         } else {
                             b = b + " \u265B ";
@@ -206,7 +206,7 @@ public class Board {
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof Bishop) {
-                        if(board[i][j].white) {
+                        if(!board[i][j].white) {
                             b = b + " \u2657 ";
                         } else {
                             b = b + " \u265D ";
@@ -214,7 +214,7 @@ public class Board {
                         String end = (j == 7 ? "" : "|");
                         b += end;
                     } else if (board[i][j]instanceof Knight) {
-                        if (board[i][j].white) {
+                        if (!board[i][j].white) {
                             b = b + " \u2658 ";
                         } else {
                             b = b + " \u265E ";
