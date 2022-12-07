@@ -62,7 +62,6 @@ public class AI_AlphaBeta extends AI{
 
 
     private Board board;
-    private int timeout;
     private ArrayList<Move> moves;
     private int bestIndex =0;
 
@@ -137,11 +136,15 @@ public class AI_AlphaBeta extends AI{
      * @return true if the piece is a threat
      * */
     public boolean threat(Piece p, Board board, String move){
-        Board nBoard = board;
+        Board nBoard = new Board(board);
         boolean isThreat = false;
         int x = p.translateLetNum(move).get(0);
         int y = p.translateLetNum(move).get(1);
-        nBoard.movePiece(p,x,y); //TODO will this change board or just change nBoard
+        System.out.println(p);
+        System.out.println(p.x);
+        System.out.println(p.y);
+        System.out.println(move);
+        nBoard.movePiece(p,x,y);
 
         for (String loc: p.possibleMoves()){
             if (capture(loc, p, p.white, nBoard.arrPieces)){
@@ -331,12 +334,13 @@ public class AI_AlphaBeta extends AI{
     }
 
 
-    public void executeMove(boolean player, Board board, int depth){
-        minimaxAB(board, depth, Integer.MIN_VALUE, Integer.MAX_VALUE, true);
+    public Move executeMove(boolean player, Board board){
+        minimaxAB(board, 5, Integer.MIN_VALUE, Integer.MAX_VALUE, true);
         Move m = moves.get(bestIndex);
         int x = m.getCurrPiece().translateLetNum(m.getNewLocation()).get(0);
         int y = m.getCurrPiece().translateLetNum(m.getNewLocation()).get(1);
         board.movePiece(m.getCurrPiece(), x, y);
+        return m;
     }
 
 

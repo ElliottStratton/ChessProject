@@ -21,10 +21,13 @@ public class Knight extends Piece{
      * @return true if a specific move is possible
      * */
     public boolean isPossible(int x, int y) {
+        if(sameColorMove(x,y)) {
+            return false;
+        }
         if (x == this.x && y == this.y) {
             return false;
         }
-        if(sameColorMove(x,y)) {
+        if (moveOutsideBoard(x,y)){
             return false;
         }
         if ((x == getX() + 2) || (x == getX() - 2)) {
