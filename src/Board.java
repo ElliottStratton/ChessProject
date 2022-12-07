@@ -159,6 +159,32 @@ public class Board {
         return false;
     }
 
+    public Piece getWKing() {
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (board[i][j]instanceof King) {
+                    if (((King) board[i][j]).white) {
+                        return board[i][j];
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    public Piece getBKing() {
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (board[i][j]instanceof King) {
+                    if (!((King) board[i][j]).white) {
+                        return board[i][j];
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     /**
      *
      * @return a string board where each piece is two letters, the first is either black or white

@@ -1,6 +1,7 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class Game {
+public class Game implements Convert{
     private Board board;
     private boolean currentPlayer;
 
@@ -22,12 +23,53 @@ public class Game {
         return false;
     }
 
+    public ArrayList<String> allWMoves() {
+        ArrayList<String> moves = new ArrayList<>();
+        for(Piece i : board.arrPieces) {
+            if(i.white) {
+                moves.addAll(i.possibleMoves());
+            }
+        }
+        return moves;
+    }
+
+    public ArrayList<String> allBMoves() {
+        ArrayList<String> moves = new ArrayList<>();
+        for(Piece i : board.arrPieces) {
+            if(!i.white) {
+                moves.addAll(i.possibleMoves());
+            }
+        }
+        return moves;
+    }
+
     /**
      *
      * @return true if king is in check, false otherwise
      */
-    public boolean check()
-    {
+    public boolean check() {
+        if(currentPlayer) {
+            int px = 0;
+            int py = 0;
+            for (String i : allBMoves()) {
+                px = Convert.convertX(i.charAt(0));
+                py = Convert.convertY(i.charAt(1));
+                if(board.getWKing().getX() == px && board.getWKing().getY() == py) {
+                    return true;
+                }
+            }
+        } else {
+            int px = 0;
+            int py = 0;
+            for (String i : allWMoves()) {
+                px = Convert.convertX(i.charAt(0));
+                py = Convert.convertY(i.charAt(1));
+                if(board.getBKing().getX() == px && board.getBKing().getY() == py) {
+                    return true;
+                }
+            }
+        }
+
         return false;
     }
 
