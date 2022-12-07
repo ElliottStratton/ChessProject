@@ -21,22 +21,35 @@ public class Knight extends Piece{
      * @return true if a specific move is possible
      * */
     public boolean isPossible(int x, int y) {
-        if (x == this.x && y == this.y) {
+        Board board = currBoard;
+        if(white)
+        {
+            if ((x == getX() + 2) || (x == getX() - 2)) {
+                if (((y == getY() - 1) || (y == getY() + 1)) && (board.getPiece(x,y) == null || !board.getPiece(x,y).white)) {
+                    return true;
+                }
+            }
+            if ((y == getY() + 2) || (y == getY() - 2)) {
+                if (((x == getX() - 1) || (x == getX() + 1)) && (board.getPiece(x,y) == null || !board.getPiece(x,y).white)) {
+                    return true;
+                }
+            }
             return false;
         }
-        if(sameColorMove(x,y)) {
+        else
+        {
+            if ((x == getX() + 2) || (x == getX() - 2)) {
+                if (((y == getY() - 1) || (y == getY() + 1)) && (board.getPiece(x,y) == null || board.getPiece(x,y).white)) {
+                    return true;
+                }
+            }
+            if ((y == getY() + 2) || (y == getY() - 2)) {
+                if (((x == getX() - 1) || (x == getX() + 1)) && (board.getPiece(x,y) == null || board.getPiece(x,y).white)) {
+                    return true;
+                }
+            }
             return false;
         }
-        if ((x == getX() + 2) || (x == getX() - 2)) {
-            if ((y == getY() - 1) || (y == getY() + 1)) {
-                return true;
-            }
-        }
-        if ((y == getY() + 2) || (y == getY() - 2)) {
-            if ((x == getX() - 1) || (x == getX() + 1)) {
-                return true;
-            }
-        }
-        return false;
+
     }
 }
