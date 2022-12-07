@@ -10,10 +10,10 @@ public class ConsoleDriver {
     public static String getPlayer(boolean player){
         String sPlayer = "";
         if(player){
-            sPlayer = "white";
+            sPlayer = "White";
         }
         else{
-            sPlayer = "black";
+            sPlayer = "Black";
         }
         return sPlayer;
     }
@@ -51,6 +51,10 @@ public class ConsoleDriver {
         else if (x == 'h'){
             numX = 7;
         }
+        else
+        {
+            numX = 8;
+        }
 //        return x-65;
         return numX;
     }
@@ -84,16 +88,17 @@ public class ConsoleDriver {
                 int x = 0;
                 int y = 0;
                 boolean hasPiece = false;
-                System.out.println(player + "'s turn to move");
+                System.out.println(player + "'s turn to move.");
                 System.out.println("Enter initial piece's coordinates: ");
                 while(!hasPiece) {
                     String currLoc = scnr.next();
                     x = convertX(currLoc.charAt(0));//For testing purposes
-                    System.out.println("x " + x);
+                    //System.out.println("x " + x);
                     y = convertY(currLoc.charAt(1));//For testing purposes
-                    System.out.println("y " + y);
+                    //System.out.println("y " + y);
+
                     //System.out.println(game.getBoard().getPiece(x, y));//For testing purposes
-                    if(game.getBoard().getPiece(x,y) != null){
+                    if(x >= 0 && x <= 7 & y >= 0 && y <= 7 && game.getBoard().getPiece(x,y) != null){
                         hasPiece = true;
                     }
                     else{
@@ -101,12 +106,13 @@ public class ConsoleDriver {
                         System.out.println("Reenter initial piece's coordinates: ");
                     }
                 }
+                 //System.out.println(game.getBoard().getPiece(x, y).possibleMoves());
                 System.out.println("Enter coordinates you want to move: ");
                 String newLoc = scnr.next();
                 int newX = convertX(newLoc.charAt(0));//For testing purposes
-                System.out.println("newX " + newX);
+                // System.out.println("newX " + newX);
                 int newY = convertY(newLoc.charAt(1));//For testing purposes
-                System.out.println("newY " + newY);
+                // System.out.println("newY " + newY);
 
                // System.out.println(game.getBoard().getPiece(newX, newY));//For testing purposes
 
