@@ -81,16 +81,26 @@ public class ConsoleDriver {
             while(!valid){
                 System.out.println(game.getBoard().toString());//For testing purposes
 
+                int x = 0;
+                int y = 0;
+                boolean hasPiece = false;
                 System.out.println(player + "'s turn to move");
                 System.out.println("Enter initial piece's coordinates: ");
-                String currLoc = scnr.next();
-                int x = convertX(currLoc.charAt(0));//For testing purposes
-                System.out.println("x " + x);
-                int y = convertY(currLoc.charAt(1));//For testing purposes
-                System.out.println("y " + y);
-                //System.out.println(game.getBoard().getPiece(x, y));//For testing purposes
-                System.out.println("Possible moves: " + game.getBoard().getPiece(x, y).possibleMoves()); // for testing
-
+                while(!hasPiece) {
+                    String currLoc = scnr.next();
+                    x = convertX(currLoc.charAt(0));//For testing purposes
+                    System.out.println("x " + x);
+                    y = convertY(currLoc.charAt(1));//For testing purposes
+                    System.out.println("y " + y);
+                    //System.out.println(game.getBoard().getPiece(x, y));//For testing purposes
+                    if(game.getBoard().getPiece(x,y) != null){
+                        hasPiece = true;
+                    }
+                    else{
+                        System.out.println("There is not a piece at this location.");
+                        System.out.println("Reenter initial piece's coordinates: ");
+                    }
+                }
                 System.out.println("Enter coordinates you want to move: ");
                 String newLoc = scnr.next();
                 int newX = convertX(newLoc.charAt(0));//For testing purposes
@@ -112,7 +122,7 @@ public class ConsoleDriver {
             }
             //System.out.println(game.check());
             System.out.println(game.getBoard().toString());
-            if (game.checkmate()){
+            if (game.checkmate(game.isCurrentPlayer(), game.getBoard())){
                 hasWon = true;
                 System.out.println(player + " has won with a checkmate");
             }

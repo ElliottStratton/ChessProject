@@ -45,6 +45,7 @@ public abstract class Piece {
         this.y = y;
     }
 
+
     /**
      *
      * @return the X coordinate of the current piece
@@ -281,5 +282,4 @@ public abstract class Piece {
         }
         return location;
     }
-
 }
