@@ -126,6 +126,7 @@ public class ConsoleDriver {
                     System.out.println("Try reentering the coordinates.");
                 }
             }
+            //System.out.println(game.check());
             System.out.println(game.getBoard().toString());
             if (game.checkmate(game.isCurrentPlayer(), game.getBoard())){
                 hasWon = true;
@@ -136,4 +137,5 @@ public class ConsoleDriver {
             }
         }
     }//End main
+
 }

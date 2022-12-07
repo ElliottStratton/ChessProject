@@ -110,11 +110,12 @@ public abstract class Piece {
         {
             throw new IllegalArgumentException("Desired location is outside the board. Please enter a valid location");
         }
-        else if(capture(x,y) != null){
+        else if(capture(x,y) != null && isPossible(x, y)){
             Piece p = capture(x,y);
             currBoard.unOccupy(x, y);
             currBoard.unOccupy(this.x,this.y);
             currBoard.occupy(this, x,y);
+            setPosition(x,y);
             currBoard.arrPieces.remove(p);
             firstMove = false;
         }
