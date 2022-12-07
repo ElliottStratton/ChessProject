@@ -115,6 +115,7 @@ public abstract class Piece {
             currBoard.unOccupy(x, y);
             currBoard.unOccupy(this.x,this.y);
             currBoard.occupy(this, x,y);
+            setPosition(x,y);
             currBoard.arrPieces.remove(p);
             firstMove = false;
         }
