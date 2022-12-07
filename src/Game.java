@@ -48,6 +48,7 @@ public class Game {
      * @return true if king is in check, false otherwise
      */
     public boolean check(boolean player, Board board) {
+
         movesIntoCheck.clear();
         movesOutOfCheck.clear();
         findMovesOutOfCheck(player);

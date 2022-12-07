@@ -27,22 +27,26 @@ public class AI_Random extends AI{
 
     //If a piece has a possible move then add the piece then pick a piece at random and then create the arraylist of possible moves
 
-    public void executeMove(boolean player, Board board, int n) { //Complete as far as I know
-        boolean found = false;
+    public Move executeMove(boolean player, Board board) { //Complete as far as I know
         Random rand1 = new Random();
-        int randPiece = 0;
+        int randPiece;
         Piece piece = getNumPieces(player, board).get(0);
-        while (!found) {
+        while (true) {
             randPiece = rand1.nextInt(getNumPieces(player, board).size());
             Piece currPiece = getNumPieces(player, board).get(randPiece);
             if (!currPiece.possibleMoves().isEmpty()) {
                 piece = currPiece;
-                found = true;
+                break;
             }
         }
-        int x = piece.translateLetNum(piece.possibleMoves().get(0)).get(0);
-        int y = piece.translateLetNum(piece.possibleMoves().get(0)).get(1);
+        ArrayList<String> ms = piece.possibleMoves();
+        System.out.println(ms);
+        System.out.println(ms);
 
-        piece.move(x,y);
+
+        int x = piece.translateLetNum(ms.get(ms.size()-1)).get(0);
+        int y = piece.translateLetNum(ms.get(ms.size()-1)).get(1);
+
+        return new Move(ms.get(ms.size()-1), piece);
     }
 }

@@ -21,7 +21,7 @@ public class AI_Capture extends AI{
 
     private ArrayList<Piece> opponentPieces;
     private ArrayList<String> oppPositions;//Contains all the locations of the opponent's pieces
-    private ArrayList<Piece> capturePieces;
+    private ArrayList<Move> capturePieces;
 
     /**
      * A basic Constructor
@@ -62,8 +62,9 @@ public class AI_Capture extends AI{
      * @param board the current state of the board
      * @return the piece that has an option to capture an opponent's piece
      * */
-    public Piece randCapture(boolean player, Board board){
+    public Move randCapture(boolean player, Board board){
         Random rand1 = new Random();
+        Move capMove;
         Piece currPiece;
         opponentPieces = getPieces(!player, board); //Stores a list of all the opponent's pieces
 
@@ -80,11 +81,16 @@ public class AI_Capture extends AI{
                 for (int k = 0; k < oppPositions.size(); k++) { //Loops through location of opponents pieces
                     String oppLoc = oppPositions.get(k);
                     if (Objects.equals(loc, oppLoc)) {
-                        capturePieces.add(currPiece);
+                        capMove = new Move(loc, currPiece);
+                        capturePieces.add(capMove);
                         break;
                     }
                 }
             }
+        }
+        if (capturePieces.isEmpty()){
+            AI_Random r = new AI_Random();
+            return r.executeMove(player, board);
         }
         return capturePieces.get(rand1.nextInt(capturePieces.size()));
     }//end method
@@ -94,18 +100,8 @@ public class AI_Capture extends AI{
      * @param player the current player
      * @param board the current state of the board
      * */
-    public void executeMove(boolean player, Board board, int n){
-        Piece movePiece = randCapture(player, board);
-        for (int i = 0; i < movePiece.possibleMoves().size(); i++) {
-            for (int j = 0; j < opponentPieces.size(); j++) {
-                String oppLoc = getLocNotation(opponentPieces.get(i));
-                String pieceLoc = getLocNotation(movePiece);
-                if(Objects.equals(pieceLoc, oppLoc)){
-                    int x = movePiece.translateLetNum(pieceLoc).get(0);
-                    int y = movePiece.translateLetNum(pieceLoc).get(1);
-                    movePiece.move(x,y);
-                }
-            }
-        }
+    public Move executeMove(boolean player, Board board){
+        Move move = randCapture(player, board);
+        return move;
     }//end method
 }

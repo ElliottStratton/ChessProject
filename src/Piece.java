@@ -19,7 +19,6 @@ public abstract class Piece {
     public Piece() {
     }
 
-
     /**
      *
      * @param color If the color is white color == true
@@ -97,7 +96,7 @@ public abstract class Piece {
      * @param y                 "
      */
     public void move(int x, int y) throws IllegalArgumentException{
-        System.out.println("Is Possible: " + isPossible(x,y));
+//        System.out.println("Is Possible: " + isPossible(x,y));
         if(sameSpot(x,y))
         {
             throw new IllegalArgumentException("Coordinates to move are in the same spot.");
@@ -140,7 +139,7 @@ public abstract class Piece {
     public Piece capture(int x, int y){
         Piece capturePiece = null;
         ArrayList<Piece> pieces = new ArrayList<>();
-        for (Piece p : currBoard.arrPieces) {
+        for (Piece p : currBoard.arrPieces) {//Gets all enemy pieces
             if (p.white != this.white){
                 pieces.add(p);
             }
@@ -255,7 +254,7 @@ public abstract class Piece {
         ArrayList<Integer> location = new ArrayList<>();
         char x = loc.charAt(0);
         int numX = 0;
-        int y = loc.charAt(1) -8;
+        int y = 56-loc.charAt(1) ;
 
         if (x == 'a'){
             numX = 0;
@@ -281,6 +280,8 @@ public abstract class Piece {
         else if (x == 'h'){
             numX = 7;
         }
+        location.add(numX);
+        location.add(y);
         return location;
     }
 }
