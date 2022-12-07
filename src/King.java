@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 
 public class King extends Piece{
 
@@ -8,25 +6,26 @@ public class King extends Piece{
         b.occupy(this,x,y);
     }
 
-    public King(){
-    }
+//    public King(){
+//
+//    }
 
     /**
      * This returns a list of all possible moves for this specific piece
      * @return ArrayList<String> is the arraylist of possible moves
      * */
-    public ArrayList<String> possibleMoves() {
-        ArrayList<String> moves = new ArrayList<>();
+//    public ArrayList<String> possibleMoves() {
+//        ArrayList<String> moves = new ArrayList<>();
+//
+//        for (int i = -1; i < 2; i++) {
+//            for (int j = -1; j < 2; j++) {
+//                if (isPossible(x+i, y+j)){
+//                    moves.add(translateNum(new ArrayList<>(List.of(x+i,y+j))));
+//                }
+//            }
+//        }
 
-        for (int i = -1; i < 2; i++) {
-            for (int j = -1; j < 2; j++) {
-                if (isPossible(x+i, y+j)){
-                    moves.add(translateNum(new ArrayList<>(List.of(x+i,y+j))));
-                }
-            }
-        }
-
-        //If the above for loops don't work, the lines below definitely will.
+    //If the above for loops don't work, the lines below definitely will.
 //
 //        if (this.isPossible(x-1, y)){
 //            moves.add(translateNum(new ArrayList<>(List.of(x-1,y))));
@@ -52,27 +51,38 @@ public class King extends Piece{
 //        if (this.isPossible(x-1, y-1)){
 //            moves.add(translateNum(new ArrayList<>(List.of(x-1,y-1))));
 //        }
-        return moves;
-    }
+//        return moves;
+//    }
 
     @Override
-    public boolean isPossible(int x, int y) throws IllegalArgumentException{
-        if(sameSpot(x,y)) {
+    public boolean isPossible(int newX, int newY) throws IllegalArgumentException{
+        int dx = newX - x;
+        int dy = newY - y;
+        Board b = currBoard;
+        if(dy > 1 || dy < -1 || dx > 1 || dx < -1 || (dx == 0 && dy == 0))
+        {
             return false;
         }
-
-        if(sameColorMove(x,y)) {
-            return false;
-        }
-
-        for (int i = -1; i < 2; i++) {
-            for (int j = -1; j < 2; j++) {
-                if(getX() + i == x && getY() == y) {
-                    return true;
-                }
+        Piece p = b.getPiece(newX,newY);
+        if(white) // white is at the bottom
+        {
+            if(p == null || !p.white)
+            {
+                return true;
             }
+            return false;
         }
-        throw new IllegalArgumentException();
+
+        else // player black
+        {
+            if(p == null || p.white)
+            {
+                return true;
+            }
+            return false;
+
+        }
     }
 
 }
+
