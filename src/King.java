@@ -6,53 +6,9 @@ public class King extends Piece{
         b.occupy(this,x,y);
     }
 
-//    public King(){
-//
-//    }
+    public King(){
 
-    /**
-     * This returns a list of all possible moves for this specific piece
-     * @return ArrayList<String> is the arraylist of possible moves
-     * */
-//    public ArrayList<String> possibleMoves() {
-//        ArrayList<String> moves = new ArrayList<>();
-//
-//        for (int i = -1; i < 2; i++) {
-//            for (int j = -1; j < 2; j++) {
-//                if (isPossible(x+i, y+j)){
-//                    moves.add(translateNum(new ArrayList<>(List.of(x+i,y+j))));
-//                }
-//            }
-//        }
-
-    //If the above for loops don't work, the lines below definitely will.
-//
-//        if (this.isPossible(x-1, y)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x-1,y))));
-//        }
-//        if (this.isPossible(x-1, y+1)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x-1,y+1))));
-//        }
-//        if (this.isPossible(x, y+1)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x,y+1))));
-//        }
-//        if (this.isPossible(x+1, y+1)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x+1,y+1))));
-//        }
-//        if (this.isPossible(x+1, y)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x+1,y))));
-//        }
-//        if (this.isPossible(x+1, y-1)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x+1,y-1))));
-//        }
-//        if (this.isPossible(x, y-1)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x,y-1))));
-//        }
-//        if (this.isPossible(x-1, y-1)){
-//            moves.add(translateNum(new ArrayList<>(List.of(x-1,y-1))));
-//        }
-//        return moves;
-//    }
+    }
 
     @Override
     public boolean isPossible(int newX, int newY) throws IllegalArgumentException{
