@@ -119,11 +119,13 @@ public class ConsoleDriver {
                 }
             }
             System.out.println(game.getBoard().toString());
-            if (game.checkmate()){
-                hasWon = true;
-                System.out.println(player + " has won with a checkmate");
-            }
-            else{
+            if(game.check(game.getBoard(), !game.isCurrentPlayer())) {
+                System.out.println("check");
+                if (game.checkmate()) {
+                    hasWon = true;
+                    System.out.println(player + " has won with a checkmate");
+                }
+            }else {
                 game.changePlayer();
             }
         }

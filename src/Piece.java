@@ -19,6 +19,15 @@ public abstract class Piece {
     public Piece() {
     }
 
+    public Piece(Piece p) {
+        white = p.white;
+        x = p.x;
+        y = p.y;
+        currBoard = p.currBoard;
+        value = p.value;
+        firstMove = p.firstMove;
+    }
+
     /**
      *
      * @param color If the color is white color == true

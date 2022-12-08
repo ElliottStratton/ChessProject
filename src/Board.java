@@ -24,9 +24,9 @@ public class Board {
         arrPieces.add(bBOne);
         Bishop bBTwo = new Bishop(false,5,0,300,this);
         arrPieces.add(bBTwo);
-        King bKing = new King(false,3,0,1800,this);
+        King bKing = new King(false,4,0,1800,this);
         arrPieces.add(bKing);
-        Queen bQueen = new Queen(false,4,0,900,this);
+        Queen bQueen = new Queen(false,3,0,900,this);
         arrPieces.add(bQueen);
 
         Pawn bPOne = new Pawn(false,0,1, 100,this);
@@ -76,9 +76,9 @@ public class Board {
         arrPieces.add(wBOne);
         Bishop wBTwo = new Bishop(true,5,7,300,this);
         arrPieces.add(wBTwo);
-        King wKing = new King(true,3,7,1800,this);
+        King wKing = new King(true,4,7,1800,this);
         arrPieces.add(wKing);
-        Queen wQueen = new Queen(true,4,7,900,this);
+        Queen wQueen = new Queen(true,3,7,900,this);
         arrPieces.add(wQueen);
     }
 
@@ -95,7 +95,9 @@ public class Board {
         board = new Piece[8][8];
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
-                board[i][j] = b.board[i][j];
+                Piece p = b.getPiece(i,j);
+
+
             }
         }
         for (int i = 0; i < b.arrPieces.size(); i++) {
