@@ -98,6 +98,9 @@ public class Board {
                 board[i][j] = b.board[i][j];
             }
         }
+        for (int i = 0; i < b.arrPieces.size(); i++) {
+            arrPieces.add(b.arrPieces.get(i));
+        }
     }
 
 
