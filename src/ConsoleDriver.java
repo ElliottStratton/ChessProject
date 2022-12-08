@@ -119,7 +119,7 @@ public class ConsoleDriver {
                 }
             }
             System.out.println(game.getBoard().toString());
-            if (game.checkmate(game.isCurrentPlayer(), game.getBoard())){
+            if (game.checkmate()){
                 hasWon = true;
                 System.out.println(player + " has won with a checkmate");
             }
@@ -156,7 +156,7 @@ public class ConsoleDriver {
             }
             if (choice == 1) {
                 ConsoleAI aiConsole = new ConsoleAI(game);
-                aiConsole.run(game);
+                aiConsole.run();
             } else {
                 run(game, scnr);
             }

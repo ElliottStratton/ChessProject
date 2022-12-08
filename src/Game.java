@@ -17,71 +17,163 @@ public class Game {
         movesIntoCheck = new HashMap<>();
     }
 
-    /**
-     * @return true if king is in checkmate, false otherwise
-     */
-    public boolean checkmate(boolean player, Board board) {
-        if (check(player, board) && movesOutOfCheck.isEmpty()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    /**
+//     * @return true if king is in checkmate, false otherwise
+//     */
+//    public boolean checkmate(boolean player, Board board) {
+//        if (check(player, board) && movesOutOfCheck.isEmpty()) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
 
-    public void findMovesOutOfCheck(boolean player) {
-        for (Piece p : board.arrPieces) { //All pieces on the board
-            ArrayList<String> movesOut = new ArrayList<>();
-            if (p.white == player && !movesIntoCheck.isEmpty()) { //Just the current Player's pieces
-                for (String move : p.possibleMoves()) { //All possible moves of that piece
-                    Board nB = new Board(board);
-                    nB.movePiece(p, p.x, p.y);
-                    if (check(player, nB)) {
-                        movesOut.add(move);
-                    }
-                }
-            }
-            movesOutOfCheck.put(p, movesOut);
-        }
-    }
+//    public void findMovesOutOfCheck(boolean player) {
+//        for (Piece p : board.arrPieces) { //All pieces on the board
+//            ArrayList<String> movesOut = new ArrayList<>();
+//            if (p.white == player && !movesIntoCheck.isEmpty()) { //Just the current Player's pieces
+//                for (String move : p.possibleMoves()) { //All possible moves of that piece
+//                    Board nB = new Board(board);
+//                    nB.movePiece(p, p.x, p.y);
+//                    if (check(player, nB)) {
+//                        movesOut.add(move);
+//                    }
+//                }
+//            }
+//            movesOutOfCheck.put(p, movesOut);
+//        }
+//    }
 
-    /**
-     * @return true if king is in check, false otherwise
-     */
-    public boolean check(boolean player, Board board) {
+//    /**
+//     * @return true if king is in check, false otherwise
+//     */
+//    public boolean check(boolean player, Board board) {
+//
+//        movesIntoCheck.clear();
+//        movesOutOfCheck.clear();
+//        findMovesOutOfCheck(player);
+//
+//        boolean check = false;
+//        Piece king = new King();
+//        for (Piece p : board.arrPieces) { //Find the King of the current player
+//            if (p.white == player) {
+//                if (p instanceof King) {
+//                    king = p;
+//                }
+//            }
+//        }
+//        String kingLocation = king.translateNum(new ArrayList<Integer>(List.of(king.x, king.y)));
+//
+//        for (Piece p : board.arrPieces) { //All pieces on the board
+//            if (p.white != player) {
+//                String checkMove = "";
+//                if (!p.possibleMoves().isEmpty()) {
+//                    for (String move : p.possibleMoves()) { //All possible moves of the opponent's piece(s)
+//                        if (Objects.equals(move, kingLocation)) {
+//                            checkMove = move;
+//                            check = true;
+//                        }
+//                    }
+//                }
+//                if (check) {
+//                    movesIntoCheck.put(p, checkMove);
+//                }
+//            }
+//        }
+//        return check;
+//    }
 
-        movesIntoCheck.clear();
-        movesOutOfCheck.clear();
-        findMovesOutOfCheck(player);
-
-        boolean check = false;
-        Piece king = new King();
-        for (Piece p : board.arrPieces) { //Find the King of the current player
+    public boolean check(Board b, boolean player) {
+        King king = new King();
+        for (Piece p : b.arrPieces) { //Find the King of the current player
             if (p.white == player) {
                 if (p instanceof King) {
-                    king = p;
+                    king = (King) p;
+                }
+            }
+        }
+        ArrayList<String> allPossMoves = new ArrayList<>();
+        for (int i = 0; i < b.arrPieces.size(); i++) {
+            if (b.arrPieces.get(i).white != currentPlayer) {
+                allPossMoves.addAll(b.arrPieces.get(i).possibleMoves());
+            }
+        }
+        for (String s : allPossMoves) {
+            if(king.x == Convert.convertX(s.charAt(0)) && king.y == Convert.convertY(s.charAt(1))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean checkMove(Piece p, int x, int y) {
+        if(p instanceof King) {
+            ArrayList<String> allPossMoves = new ArrayList<>();
+            for (int i = 0; i < board.arrPieces.size(); i++) {
+                if (board.arrPieces.get(i).white == currentPlayer) {
+                    allPossMoves.addAll(board.arrPieces.get(i).possibleMoves());
+                }
+            }
+            for (String s : allPossMoves) {
+                if(x == Convert.convertX(s.charAt(0)) && y == Convert.convertY(s.charAt(1))) {
+                    return true;
+                }
+            }
+        } else {
+            board.unOccupy(p.x, p.y);
+            if(check(board, currentPlayer)) {
+                board.occupy(p, p.x, p.y);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean checkmate() {
+        King king = new King();
+        for (Piece p : board.arrPieces) { //Find the King of the current player
+            if (p.white != currentPlayer) {
+                if (p instanceof King) {
+                    king = (King) p;
                 }
             }
         }
 
-        String kingLocation = king.translateNum(new ArrayList<Integer>(List.of(king.x, king.y)));
-
-        for (Piece p : board.arrPieces) { //All pieces on the board
-            if (p.white != player) {
-                String checkMove = "";
-                if (!p.possibleMoves().isEmpty()) {
-                    for (String move : p.possibleMoves()) { //All possible moves of the opponent's piece(s)
-                        if (Objects.equals(move, kingLocation)) {
-                            checkMove = move;
-                            check = true;
+        ArrayList<String> allPossMoves = new ArrayList<>();
+        for (int i = 0; i < board.arrPieces.size(); i++) {
+            if (board.arrPieces.get(i).white == currentPlayer) { //might need to be != here
+                allPossMoves.addAll(board.arrPieces.get(i).possibleMoves());
+            }
+        }
+        int i = 0;
+        for (String s : king.possibleMoves()) {
+            for (String g : allPossMoves) {
+                if (s.equalsIgnoreCase(g)) {
+                    ++i;
+                    break;
+                }
+            }
+        }
+        if (i == king.possibleMoves().size()) {
+            for(Piece p : board.arrPieces) {
+                if(p.white != currentPlayer) {
+                    for(String s : p.possibleMoves()) {
+                        Board b = new Board(board);
+                        board.movePiece(p, Convert.convertX(s.charAt(0)), Convert.convertY(s.charAt(1)));
+                        if(!check(b, !currentPlayer)) {
+                            return false;
                         }
                     }
                 }
-                if (check) {
-                    movesIntoCheck.put(p, checkMove);
-                }
             }
+
+
+
         }
-        return check;
+
+
+        return true;
     }
 
 
@@ -100,10 +192,14 @@ public class Game {
         if (currPiece.white != currentPlayer) {
             throw new IllegalArgumentException("This is not your piece to move.");
         } else {
-            try {
-                currPiece.move(x2, y2); //move() throws an IllegalArgumentException with a message for each possible incorrect solution
-            } catch (IllegalArgumentException e) {
-                throw e;
+            if(!checkMove(board.getPiece(x1,y1), x2, y2)) {
+                try {
+                    currPiece.move(x2, y2); //move() throws an IllegalArgumentException with a message for each possible incorrect solution
+                } catch (IllegalArgumentException e) {
+                    throw e;
+                }
+            } else {
+                throw new IllegalArgumentException("Cannot move into check.");
             }
         }
         /*
