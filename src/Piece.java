@@ -43,6 +43,10 @@ public abstract class Piece {
         this.value = value;
     }
 
+    public void setCurrBoard(Board b) {
+        currBoard = b;
+    }
+
     /**
      * Sets position to the parameters x and y
      * @param x new coordinate of the move

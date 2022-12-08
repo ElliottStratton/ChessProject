@@ -157,9 +157,13 @@ public class Game {
         }
         if (i == king.possibleMoves().size()) {
             for(Piece p : board.arrPieces) {
+                Board b1 = new Board(board);
+                int px = p.x;
+                int py = p.y;
                 if(p.white != currentPlayer) {
                     for(String s : p.possibleMoves()) {
-                        Board b = new Board(board);
+                        Board b = new Board(b1);
+                        p.setCurrBoard(b);
                         System.out.println(p);
                         System.out.println(p.possibleMoves());
                         System.out.println(b);
@@ -167,6 +171,7 @@ public class Game {
                         if(!check(b, !currentPlayer)) {
                             return false;
                         }
+                        p = b1.getPiece(px, py);
                     }
                 }
             }
