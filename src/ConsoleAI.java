@@ -4,7 +4,7 @@ public class ConsoleAI {
 
     private static AI artIntel;
     private static String name;
-    private static Scanner scnr = new Scanner(System.in);;
+    private static Scanner scnr = new Scanner(System.in);
     private static Game g;
 
 
