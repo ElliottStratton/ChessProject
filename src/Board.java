@@ -112,7 +112,7 @@ public class Board {
                     } else {
                         newP = null;
                     }
-                board[i][j] = newP;
+                board[j][i] = newP;
             }
         }
         for (int i = 0; i < b.arrPieces.size(); i++) {

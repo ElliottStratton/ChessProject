@@ -94,7 +94,7 @@ public class Game {
         }
         ArrayList<String> allPossMoves = new ArrayList<>();
         for (int i = 0; i < b.arrPieces.size(); i++) {
-            if (b.arrPieces.get(i).white != currentPlayer) {
+            if (b.arrPieces.get(i).white != player) {
                 allPossMoves.addAll(b.arrPieces.get(i).possibleMoves());
             }
         }
@@ -160,6 +160,9 @@ public class Game {
                 if(p.white != currentPlayer) {
                     for(String s : p.possibleMoves()) {
                         Board b = new Board(board);
+                        System.out.println(p);
+                        System.out.println(p.possibleMoves());
+                        System.out.println(b);
                         board.movePiece(p, Convert.convertX(s.charAt(0)), Convert.convertY(s.charAt(1)));
                         if(!check(b, !currentPlayer)) {
                             return false;
