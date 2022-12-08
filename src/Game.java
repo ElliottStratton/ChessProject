@@ -120,9 +120,9 @@ public class Game {
                 }
             }
         } else {
-            Board b = new Board(board);
-            b.movePiece(p, x ,y);
-            if(check(b, currentPlayer)) {
+            board.unOccupy(p.x, p.y);
+            if(check(board, currentPlayer)) {
+                board.occupy(p, p.x, p.y);
                 return true;
             }
         }

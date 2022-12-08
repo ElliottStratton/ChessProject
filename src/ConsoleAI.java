@@ -148,77 +148,77 @@ public class ConsoleAI {
         System.out.println(name + " has won the game.");
     }
 
-    public static void main(String[] args) {
-        boolean hasWon = false;
-        g = new Game();
-
-        System.out.println("Enter name:");
-        name = scnr.nextLine();
-        System.out.println("Choose level of opponent:");
-        System.out.println("Enter 1 for Easy, 2 for medium, 3 for Hard");
-        while(true){
-            int choice = scnr.nextInt();
-            if (choice == 1){
-                artIntel = new AI_Random();
-                break;
-            }
-            else if (choice == 2){
-                artIntel = new AI_Capture();
-                break;
-            }
-            else if (choice == 3){
-                artIntel = new AI_AlphaBeta(g.getBoard());
-//              alphaBetaAI.minimaxAB(g.getBoard(), 4, Integer.MAX_VALUE, Integer.MIN_VALUE, true);
-                break;
-            }
-            else{
-                System.out.println("Incorrect entry. Please retry.");
-            }
-        }
-
-
-
-        while(!hasWon){ //for testing
-            System.out.println(g.getBoard().toString());
-            if (!g.isCurrentPlayer()){
-                name = "AI";
-            }
-
-            //Player move
-            System.out.println("Enter initial piece's coordinates: ");
-            String currLoc = scnr.next();
-            int x = convertX(currLoc.charAt(0));
-            int y = convertY(currLoc.charAt(1));
-
-            System.out.println("Enter coordinates you want to move: ");
-            String newLoc = scnr.next();
-            int newX = convertX(newLoc.charAt(0));
-            int newY = convertY(newLoc.charAt(1));
-            //Player move
-            g.nextMove(x,y,newX,newY);
-
-            System.out.println(g.getBoard().toString());
-            g.changePlayer();
-
-            //AI move
-            Move aiMove = artIntel.executeMove(g.isCurrentPlayer(), g.getBoard());
-            Piece moveP = aiMove.getCurrPiece();
-            int aiX = moveP.translateLetNum(aiMove.getCurrLocation()).get(0);
-            System.out.println("x: " + aiX);
-            int aiY = moveP.translateLetNum(aiMove.getCurrLocation()).get(1);
-            System.out.println("y: " + aiY);
-            System.out.println(g.getBoard().getPiece(aiX,aiY));//for testing
-            int aiNewX = moveP.translateLetNum(aiMove.getNewLocation()).get(0);
-            System.out.println("newx: " + aiNewX);
-            int aiNewY = moveP.translateLetNum(aiMove.getNewLocation()).get(1);
-            System.out.println("newy: " + aiNewY);
-            g.nextMove(aiX,aiY,aiNewX,aiNewY);
-
-            if (g.checkmate()){
-                hasWon = true;
-            }
-            g.changePlayer();
-        }
-        System.out.println(name + " has won the game.");
-    }
+//    public static void main(String[] args) {
+//        boolean hasWon = false;
+//        g = new Game();
+//
+//        System.out.println("Enter name:");
+//        name = scnr.nextLine();
+//        System.out.println("Choose level of opponent:");
+//        System.out.println("Enter 1 for Easy, 2 for medium, 3 for Hard");
+//        while(true){
+//            int choice = scnr.nextInt();
+//            if (choice == 1){
+//                artIntel = new AI_Random();
+//                break;
+//            }
+//            else if (choice == 2){
+//                artIntel = new AI_Capture();
+//                break;
+//            }
+//            else if (choice == 3){
+//                artIntel = new AI_AlphaBeta(g.getBoard());
+////              alphaBetaAI.minimaxAB(g.getBoard(), 4, Integer.MAX_VALUE, Integer.MIN_VALUE, true);
+//                break;
+//            }
+//            else{
+//                System.out.println("Incorrect entry. Please retry.");
+//            }
+//        }
+//
+//
+//
+//        while(!hasWon){ //for testing
+//            System.out.println(g.getBoard().toString());
+//            if (!g.isCurrentPlayer()){
+//                name = "AI";
+//            }
+//
+//            //Player move
+//            System.out.println("Enter initial piece's coordinates: ");
+//            String currLoc = scnr.next();
+//            int x = convertX(currLoc.charAt(0));
+//            int y = convertY(currLoc.charAt(1));
+//
+//            System.out.println("Enter coordinates you want to move: ");
+//            String newLoc = scnr.next();
+//            int newX = convertX(newLoc.charAt(0));
+//            int newY = convertY(newLoc.charAt(1));
+//            //Player move
+//            g.nextMove(x,y,newX,newY);
+//
+//            System.out.println(g.getBoard().toString());
+//            g.changePlayer();
+//
+//            //AI move
+//            Move aiMove = artIntel.executeMove(g.isCurrentPlayer(), g.getBoard());
+//            Piece moveP = aiMove.getCurrPiece();
+//            int aiX = moveP.translateLetNum(aiMove.getCurrLocation()).get(0);
+//            System.out.println("x: " + aiX);
+//            int aiY = moveP.translateLetNum(aiMove.getCurrLocation()).get(1);
+//            System.out.println("y: " + aiY);
+//            System.out.println(g.getBoard().getPiece(aiX,aiY));//for testing
+//            int aiNewX = moveP.translateLetNum(aiMove.getNewLocation()).get(0);
+//            System.out.println("newx: " + aiNewX);
+//            int aiNewY = moveP.translateLetNum(aiMove.getNewLocation()).get(1);
+//            System.out.println("newy: " + aiNewY);
+//            g.nextMove(aiX,aiY,aiNewX,aiNewY);
+//
+//            if (g.checkmate()){
+//                hasWon = true;
+//            }
+//            g.changePlayer();
+//        }
+//        System.out.println(name + " has won the game.");
+//    }
 }
