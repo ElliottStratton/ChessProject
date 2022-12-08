@@ -10,6 +10,7 @@ public class ConsoleAI {
 
     public ConsoleAI(Game g){
         this.g = g;
+        String name = "";
     }
 
     public static void makeMove(Move move, Board board){
