@@ -69,15 +69,8 @@ public class ConsoleDriver {
         return 56-y;
     }
 
-    public static void main(String[] args) {
-        Scanner scnr = new Scanner(System.in);
-        Game game = new Game();
+    public static void run(Game game, Scanner scnr){
         boolean hasWon = false;
-
-        System.out.println("Initial Board");
-//        System.out.println(game.getBoard().toString()); //For testing purposes
-//        System.out.println(Arrays.deepToString(game.getBoard().getBoard())); //For testing purposes
-
         while(!hasWon){
             String player = getPlayer(game.isCurrentPlayer());
 
@@ -106,16 +99,15 @@ public class ConsoleDriver {
                         System.out.println("Reenter initial piece's coordinates: ");
                     }
                 }
-                 //System.out.println(game.getBoard().getPiece(x, y).possibleMoves());
-                System.out.println("Enter coordinates you want to move: ");
+                //System.out.println(game.getBoard().getPiece(x, y).possibleMoves());
+                System.out.println("Enter coordinates you want to move to: ");
                 String newLoc = scnr.next();
                 int newX = convertX(newLoc.charAt(0));//For testing purposes
                 // System.out.println("newX " + newX);
                 int newY = convertY(newLoc.charAt(1));//For testing purposes
                 // System.out.println("newY " + newY);
 
-               // System.out.println(game.getBoard().getPiece(newX, newY));//For testing purposes
-
+                // System.out.println(game.getBoard().getPiece(newX, newY));//For testing purposes
 
                 try{
                     game.nextMove(x,y,newX,newY);
@@ -134,6 +126,46 @@ public class ConsoleDriver {
             }
             else{
                 game.changePlayer();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scnr = new Scanner(System.in);
+        Game game = new Game();
+        boolean hasWon = false;
+        int choice = 0;
+        boolean end = false;
+
+//        System.out.println("Initial Board");
+//        System.out.println(game.getBoard().toString()); //For testing purposes
+//        System.out.println(Arrays.deepToString(game.getBoard().getBoard())); //For testing purposes
+
+        while(!end) {
+            System.out.println("Enter 1 for single player and 2 for two player");
+            while (true) {
+                int input = scnr.nextInt();
+                if (input == 1) {
+                    choice = 1;
+                    break;
+                } else if (input == 2) {
+                    choice = 2;
+                    break;
+                } else {
+                    System.out.println("Invalid input. Please reenter: ");
+                }
+            }
+            if (choice == 1) {
+                ConsoleAI aiConsole = new ConsoleAI(game);
+                aiConsole.run(game);
+            } else {
+                run(game, scnr);
+            }
+
+            System.out.println("Enter Go to play again or exit to leave the program:");
+            String exit = scnr.next();
+            if (!exit.equalsIgnoreCase("go")) {
+                end = true;
             }
         }
     }//End main

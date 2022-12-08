@@ -65,7 +65,6 @@ public class AI_AlphaBeta extends AI{
     private ArrayList<Move> moves;
     private int bestIndex =0;
 
-    //TODO !!!!!!!!!!!!!!!!!!!! FIGURE OUT HOW TO MAKE THE CASTLING, EN PASSANT, AND PAWN PROMOTION WORK FOR AI !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //TODO create a separate makeMove() method that handles pawn promotion, castling, and en passant
     //Make promotion always be a queen
 
@@ -140,7 +139,7 @@ public class AI_AlphaBeta extends AI{
         boolean isThreat = false;
         int x = p.translateLetNum(move).get(0);
         int y = p.translateLetNum(move).get(1);
-        System.out.println(p);
+        System.out.println(p + " "  + p.white); //For testing
         System.out.println(p.x);
         System.out.println(p.y);
         System.out.println(move);

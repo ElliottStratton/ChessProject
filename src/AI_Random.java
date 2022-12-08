@@ -40,12 +40,6 @@ public class AI_Random extends AI{
             }
         }
         ArrayList<String> ms = piece.possibleMoves();
-        System.out.println(ms);
-        System.out.println(ms);
-
-
-        int x = piece.translateLetNum(ms.get(ms.size()-1)).get(0);
-        int y = piece.translateLetNum(ms.get(ms.size()-1)).get(1);
 
         return new Move(ms.get(ms.size()-1), piece);
     }

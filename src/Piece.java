@@ -36,8 +36,8 @@ public abstract class Piece {
 
     /**
      * Sets position to the parameters x and y
-     * @param x
-     * @param y
+     * @param x new coordinate of the move
+     * @param y new coordinate of the move
      */
     public void setPosition(int x, int y) {
         this.x = x;
@@ -46,7 +46,7 @@ public abstract class Piece {
 
 
     /**
-     *
+     * Getter for x
      * @return the X coordinate of the current piece
      */
     public int getX() {
@@ -54,7 +54,7 @@ public abstract class Piece {
     }
 
     /**
-     *
+     * Getter for Y
      * @return the Y coordinate of the current piece
      */
     public int getY() {
@@ -72,7 +72,7 @@ public abstract class Piece {
     public abstract boolean isPossible(int x, int y) throws IllegalArgumentException;
 
     /**
-     *
+     * Checks all the tiles in a
      * @return an arraylist of strings of the possible moves for any piece
      */
     public ArrayList<String> possibleMoves() {
@@ -127,6 +127,8 @@ public abstract class Piece {
         }
         else
         {
+//            System.out.println("x = " + x);
+//            System.out.println("y = " + y);
             throw new IllegalArgumentException("The move is not possible.");
         }
     }
@@ -134,6 +136,8 @@ public abstract class Piece {
 
     /**
      * This returns a specific piece of the opponent if it is able to be captured by this specific piece
+     * @param x new coordinates of the piece
+     * @param y new coordinates of the piece
      * @return a Piece that is null if there is no piece that is able to be captured
      * */
     public Piece capture(int x, int y){
@@ -158,7 +162,7 @@ public abstract class Piece {
     /**
      * Ensures that a piece does not try to move to the spot it currently occupies
      * @param x new coordinates of the piece
-     * @param y
+     * @param y new coordinates of the piece
      * @return true if the new move is the same as the spot it currently occupies
      */
     public boolean sameSpot(int x,int y) {
@@ -168,10 +172,10 @@ public abstract class Piece {
     }
 
     /**
-     *
-     * @param x
-     * @param y
-     * @return
+     * Checks if a move moves a piece to a piece of the same color
+     * @param x the x coordinate of the move
+     * @param y the y coordinate of the move
+     * @return true if it is the same color piece
      */
     public boolean sameColorMove(int x, int y) {
         if (currBoard.getPiece(x,y) != null) {
@@ -254,7 +258,9 @@ public abstract class Piece {
         ArrayList<Integer> location = new ArrayList<>();
         char x = loc.charAt(0);
         int numX = 0;
-        int y = 56-loc.charAt(1) ;
+
+        int y = 56-loc.charAt(1);
+//        int y = loc.charAt(1) ;
 
         if (x == 'a'){
             numX = 0;
