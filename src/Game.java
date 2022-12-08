@@ -62,6 +62,7 @@ public class Game {
                 }
             }
         }
+
         String kingLocation = king.translateNum(new ArrayList<Integer>(List.of(king.x, king.y)));
 
         for (Piece p : board.arrPieces) { //All pieces on the board
