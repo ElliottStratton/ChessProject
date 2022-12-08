@@ -15,6 +15,12 @@ public class Rook extends Piece{
         b.occupy(this,x,y);
     }
 
+    /**
+     * Copy Constructor
+     * */
+    public Rook(Piece p) {
+        super(p);
+    }
 
 
     /**

@@ -17,6 +17,13 @@ public class Queen extends Piece{
     }
 
     /**
+     * Copy Constructor
+     * */
+    public Queen(Piece p) {
+        super(p);
+    }
+
+    /**
      * Takes a possible move and checks if it is valid
      * @param newX is the x coordinate of a possible move
      * @param newY is the y coordinate of a possible move

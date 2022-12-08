@@ -15,6 +15,13 @@ public class Knight extends Piece{
     }
 
     /**
+     * Copy Constructor
+     * */
+    public Knight(Piece p) {
+        super(p);
+    }
+
+    /**
      * Takes a possible move and checks if it is valid
      * @param x is the x coordinate of a possible move
      * @param y is the y coordinate of a possible move

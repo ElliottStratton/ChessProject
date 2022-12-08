@@ -16,6 +16,9 @@ public class Pawn extends Piece {
         b.occupy(this, x, y);
     }
 
+    /**
+     * Copy Constructor
+     * */
     public Pawn(Piece p) {
         super(p);
     }

@@ -17,6 +17,14 @@ public class Bishop extends Piece{
     }
 
     /**
+     * Copy Constructor
+     * */
+    public Bishop(Piece p) {
+        super(p);
+    }
+
+
+    /**
      * This returns a list of all possible moves for this specific piece
      * @return ArrayList<String> is the arraylist of possible moves
      * */

@@ -94,7 +94,7 @@ public class Game {
         }
         ArrayList<String> allPossMoves = new ArrayList<>();
         for (int i = 0; i < b.arrPieces.size(); i++) {
-            if (b.arrPieces.get(i).white != player) {
+            if (b.arrPieces.get(i).white != currentPlayer) {
                 allPossMoves.addAll(b.arrPieces.get(i).possibleMoves());
             }
         }
@@ -156,22 +156,13 @@ public class Game {
             }
         }
         if (i == king.possibleMoves().size()) {
-            Board b1 = new Board(board);
             for(Piece p : board.arrPieces) {
-                Board b2 = new Board(b1);
                 if(p.white != currentPlayer) {
-                    if(!p.possibleMoves().isEmpty()) {
-                        System.out.println(p.possibleMoves());
-
-                        for (String s : p.possibleMoves()) {
-                            Board b = new Board(b2);
-                            System.out.println(p);
-                            System.out.println(s);
-                            System.out.println(b);
-                            b.movePiece(p, Convert.convertX(s.charAt(0)), Convert.convertY(s.charAt(1)));
-                            if (!check(b, !currentPlayer)) {
-                                return false;
-                            }
+                    for(String s : p.possibleMoves()) {
+                        Board b = new Board(board);
+                        board.movePiece(p, Convert.convertX(s.charAt(0)), Convert.convertY(s.charAt(1)));
+                        if(!check(b, !currentPlayer)) {
+                            return false;
                         }
                     }
                 }

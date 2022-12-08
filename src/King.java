@@ -10,6 +10,14 @@ public class King extends Piece{
 
     }
 
+    /**
+     * Copy Constructor
+     * */
+    public King(Piece p) {
+        super(p);
+    }
+
+
     @Override
     public boolean isPossible(int newX, int newY) throws IllegalArgumentException{
         int dx = newX - x;
