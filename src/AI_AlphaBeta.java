@@ -353,38 +353,38 @@ public class AI_AlphaBeta extends AI{
 
 
 
-
-    /**
-     *
-     *
-     *
-     * */
-    public int minimax(Board position, int depth, boolean maximizingPlayer){
-        if (depth == 0 || position.checkmate()){
-            return boardValue(maximizingPlayer, position); //Return static evaluation of position
-        }
-
-        ArrayList<Board> positions = possibleBoards(maximizingPlayer, position);
-
-
-        if (maximizingPlayer){
-            int maxEval = Integer.MIN_VALUE;
-            for (Board child : positions) { //Loops through all the children of position or all the possible positions attainable from each possible move.
-                int eval = minimax(child, depth - 1, false);
-                maxEval = max(maxEval, eval);
-            }
-            return maxEval;
-        }
-
-        else{
-            int minEval = Integer.MAX_VALUE;
-            for (Board child : positions) { //Loops through all the children of position or all the possible positions attainable from each possible move.
-                int eval = minimax(child, depth - 1, true);
-                minEval = max(minEval, eval);
-            }
-            return minEval;
-        }
-    }
+//
+//    /**
+//     *
+//     *
+//     *
+//     * */
+//    public int minimax(Board position, int depth, boolean maximizingPlayer){
+//        if (depth == 0 || position.checkmate()){
+//            return boardValue(maximizingPlayer, position); //Return static evaluation of position
+//        }
+//
+//        ArrayList<Board> positions = possibleBoards(maximizingPlayer, position);
+//
+//
+//        if (maximizingPlayer){
+//            int maxEval = Integer.MIN_VALUE;
+//            for (Board child : positions) { //Loops through all the children of position or all the possible positions attainable from each possible move.
+//                int eval = minimax(child, depth - 1, false);
+//                maxEval = max(maxEval, eval);
+//            }
+//            return maxEval;
+//        }
+//
+//        else{
+//            int minEval = Integer.MAX_VALUE;
+//            for (Board child : positions) { //Loops through all the children of position or all the possible positions attainable from each possible move.
+//                int eval = minimax(child, depth - 1, true);
+//                minEval = max(minEval, eval);
+//            }
+//            return minEval;
+//        }
+//    }
 
 
 
