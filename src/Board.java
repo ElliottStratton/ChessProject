@@ -96,12 +96,44 @@ public class Board {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 Piece p = b.getPiece(i,j);
-
-
+                Piece newP;
+                    if(p instanceof Pawn) {
+                        newP = new Pawn(p);
+                    } else if(p instanceof Knight) {
+                        newP = new Knight(p);
+                    } else if(p instanceof Rook) {
+                        newP = new Rook(p);
+                    } else if(p instanceof Bishop) {
+                        newP = new Bishop(p);
+                    } else if(p instanceof Queen) {
+                        newP = new Queen(p);
+                    } else if(p instanceof King) {
+                        newP = new King(p);
+                    } else {
+                        newP = null;
+                    }
+                board[i][j] = newP;
             }
         }
         for (int i = 0; i < b.arrPieces.size(); i++) {
-            arrPieces.add(b.arrPieces.get(i));
+            Piece p = b.arrPieces.get(i);
+            Piece newP;
+            if(p instanceof Pawn) {
+                newP = new Pawn(p);
+            } else if(p instanceof Knight) {
+                newP = new Knight(p);
+            } else if(p instanceof Rook) {
+                newP = new Rook(p);
+            } else if(p instanceof Bishop) {
+                newP = new Bishop(p);
+            } else if(p instanceof Queen) {
+                newP = new Queen(p);
+            } else if(p instanceof King) {
+                newP = new King(p);
+            } else {
+                newP = null;
+            }
+            arrPieces.add(newP);
         }
     }
 
